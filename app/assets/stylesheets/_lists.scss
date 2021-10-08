@@ -1,0 +1,87 @@
+// Pagination
+ul.pagination{
+  li{
+    margin-right: 10px;
+    a{
+      -webkit-border-radius: 3px !important;
+            border-radius: 3px !important;
+      font-size: 16px;
+      padding: 0;
+      height: 50px;
+      width: 50px;
+      line-height: 50px;
+      text-align: center;
+      border-color: transparent;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1); 
+      color: black;
+    }
+  }
+  .active{
+    a{
+        background-color: #007bff !important;
+        color: #f8f9fa !important; 
+        border-color: transparent !important;
+    }
+  }
+}
+
+// Social Circle Icons
+ul.social-circle-icons{
+	li{
+		margin-right: 7px;
+		&:last-child{
+			margin-right: 0;
+		}
+		a{
+			display: block;
+			font-size: 15px;
+			line-height: 38px;
+			color: #007bff;
+			height: 38px;
+			width: 38px;
+			border: 2px solid #007bff;
+			background: #f8f9fa;
+			-webkit-border-radius: 100%;
+			        border-radius: 100%;
+			&:hover{
+				text-decoration: none;
+				color:#f8f9fa;
+				background: #007bff;
+			}
+		}
+	}
+}
+
+// /*----------  Category List  ----------*/
+
+// /*----------  Store List  ----------*/
+.store-list{
+	h4{
+		font-size: 20px;
+		margin-bottom: 20px;
+		letter-spacing: 0.01em;
+		color: black;
+	}
+	ul{
+		list-style: none;
+		li{
+			display: block;
+			font-size: 15px;
+			margin-bottom: 8px;
+			a{
+				display: block;
+				color: #343a40;
+				&:hover{
+					text-decoration: underline;
+					color: #007bff;
+				}
+			}
+		}
+	}
+//	@include tablet {
+//		margin-bottom: 15px;
+//	}
+//	.btn{
+//		margin-top: 35px;
+//	}
+}

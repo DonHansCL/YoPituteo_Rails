@@ -1,0 +1,29 @@
+
+.bg-light {
+  background:white;
+}
+.bg-gray {
+	background: #F5F5F5;
+}
+
+.bg-1 {
+  background-image: asset-url("1.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+.bg-2 {
+  background-image: url(../images/subscription/subscription-back.jpg); // no funciona asi por ahora, solo en la carpeta raiz images
+  background-size:cover;
+  background-repeat: no-repeat;
+}
+.bg-3 {
+  background-image: asset-url("cta-background.jpg");
+ 
+ // background: url(../images/call-to-action/cta-background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-4{
+  background: white;
+}

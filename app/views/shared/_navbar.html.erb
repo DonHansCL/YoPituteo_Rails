@@ -1,0 +1,99 @@
+
+  <body>
+
+    <section>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-lg">
+				<nav class="navbar navbar-expand-lg navbar-light navigation">
+					<a class="navbar-brand" href="index.html">
+						<img src=<%=asset_path("ypletras.png")%> alt="logo">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ml-auto main-nav ">
+							<li class="nav-item active">
+								<a class="nav-link" href="index.html">Home</a>
+							</li>
+							
+							<li class="nav-item dropdown dropdown-slide">
+								<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Pages <span><i class="fa fa-angle-down"></i></span>
+								</a>
+								<!-- Dropdown list -->
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="about-us.html">About Us</a>
+									<a class="dropdown-item" href="contact-us.html">Contactanos</a>
+									<a class="dropdown-item" href="user-profile.html">Mi cuenta</a>
+									<a class="dropdown-item" href="404.html">404 Page</a>
+									<a class="dropdown-item" href="package.html">Package</a>
+									<a class="dropdown-item" href="single.html">Single Page</a>
+									<a class="dropdown-item" href="store.html">Store Single</a>
+									<a class="dropdown-item" href="single-blog.html">Single Post</a>
+									<a class="dropdown-item" href="blog.html">Blog</a>
+
+								</div>
+							</li>
+							<li class="nav-item dropdown dropdown-slide">
+								<a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Avisos <span><i class="fa fa-angle-down"></i></span>
+								</a>
+								<!-- Dropdown list -->
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="category.html">Ad-Gird View</a>
+									<a class="dropdown-item" href="ad-listing-list.html">Ad-List View</a>
+								</div>
+							</li>
+						</ul>
+
+
+						<ul class="navbar-nav ml-auto mt-10">
+							<% if (!user_signed_in?) %>
+                            <li class="nav-item">
+                                <%= link_to "Iniciar Sesión", new_user_session_path, class: "nav-link login-button"%>
+								
+							</li>
+                             <li class="nav-item">
+                                <%= link_to "Registrate", new_user_registration_path, class: "nav-link login-button"%>
+								
+							</li>
+                             
+							<li class="nav-item">
+								<a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Nuevo aviso</a>
+							</li>
+                        <% else %>
+
+                            
+                            
+							<li class="nav-item">
+								<a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Nuevo aviso</a>
+							</li>
+
+                            <li class="nav-item dropdown dropdown-slide">
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href=""><%= current_user.email%><span></span>
+								</a>
+
+								<!-- Dropdown list -->
+								<div class="dropdown-menu">
+                                    <%= link_to "Perfil", edit_user_registration_path, class:"dropdown-item" %>
+									<a class="dropdown-item" href="dashboard-my-ads.html">Mi avisos</a>
+									<a class="dropdown-item" href="dashboard-favourite-ads.html">Avisos Favoritos</a>
+									<a class="dropdown-item" href="dashboard-pending-ads.html">Avisos Pendientes</a>
+                                    <a class="dropdown-item" href="dashboard-archived-ads.html">Mensajes</a>
+									<%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item"%>
+                                    
+								</div>
+							</li>
+
+                        <% end %>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</section>
+
