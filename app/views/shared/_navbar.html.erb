@@ -1,53 +1,16 @@
-
-  <body>
-
-    <section>
+ 	<!-- <section>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 col-lg">
-				<nav class="navbar navbar-expand-lg navbar-light navigation">
-					<a class="navbar-brand" href="index.html">
-						<img src=<%=asset_path("ypletras.png")%> alt="logo">
-					</a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				<nav class="navbar navbar-expand-lg navbar-light navigation">-->
+				
+				<!--AQUI VA EL LOGO -->
+				<!--	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						<ul class="navbar-nav ml-auto main-nav ">
-							<li class="nav-item active">
-								<a class="nav-link" href="index.html">Home</a>
-							</li>
-							
-							<li class="nav-item dropdown dropdown-slide">
-								<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Pages <span><i class="fa fa-angle-down"></i></span>
-								</a>
-								<!-- Dropdown list -->
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="about-us.html">About Us</a>
-									<a class="dropdown-item" href="contact-us.html">Contactanos</a>
-									<a class="dropdown-item" href="user-profile.html">Mi cuenta</a>
-									<a class="dropdown-item" href="404.html">404 Page</a>
-									<a class="dropdown-item" href="package.html">Package</a>
-									<a class="dropdown-item" href="single.html">Single Page</a>
-									<a class="dropdown-item" href="store.html">Store Single</a>
-									<a class="dropdown-item" href="single-blog.html">Single Post</a>
-									<a class="dropdown-item" href="blog.html">Blog</a>
-
-								</div>
-							</li>
-							<li class="nav-item dropdown dropdown-slide">
-								<a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Avisos <span><i class="fa fa-angle-down"></i></span>
-								</a>
-								<!-- Dropdown list -->
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="category.html">Ad-Gird View</a>
-									<a class="dropdown-item" href="ad-listing-list.html">Ad-List View</a>
-								</div>
-							</li>
-						</ul>
+						
 
 
 						<ul class="navbar-nav ml-auto mt-10">
@@ -73,10 +36,10 @@
 							</li>
 
                             <li class="nav-item dropdown dropdown-slide">
-								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href=""><%= current_user.email%><span></span>
-								</a>
+								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href=""><%= current_user.nombre%><span></span>
+								</a>	-->
 
-								<!-- Dropdown list -->
+								<!-- Dropdown list 
 								<div class="dropdown-menu">
                                     <%= link_to "Perfil", edit_user_registration_path, class:"dropdown-item" %>
 									<a class="dropdown-item" href="dashboard-my-ads.html">Mi avisos</a>
@@ -85,15 +48,136 @@
                                     <a class="dropdown-item" href="dashboard-archived-ads.html">Mensajes</a>
 									<%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "dropdown-item"%>
                                     
-								</div>
+								</div> 
 							</li>
 
                         <% end %>
-						</ul>
+						</ul> 
 					</div>
 				</nav>
 			</div>
 		</div>
 	</div>
-</section>
 
+
+</section>		-->
+
+
+<nav class="navbar has-shadow">
+	<div class="container">
+		<div class="navbar">
+		<a class="navbar-brand" href="index.html"><img src=<%=asset_path("ypletras.png")%> alt="logo"></a>
+
+			<%= link_to 'Dashboard', dashboard_path, class: "navbar-item"%>
+
+
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link">Ofrezco</a> <!--selling -->
+
+					<div class="navbar-dropdown">
+					<a class="navbar-item">Crear aviso</a>
+					</div>
+				</div>
+
+
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link">Necesito</a> <!--BUYING -->
+
+					<div class="navbar-dropdown">
+					<a class="navbar-item">Crear aviso</a>
+					<a class="navbar-item">Administrar solicitudes</a>
+										
+					</div>
+				</div>
+
+
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link">Solicitudes</a> <!--request -->
+
+					<div class="navbar-dropdown">
+					<a class="navbar-item">Solicitudes Activas</a>
+					<a class="navbar-item">Ofertas enviadas</a>
+										
+					</div>
+				</div>
+
+
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link">Ordenes</a> <!--Orders -->
+
+					<div class="navbar-dropdown">
+					<a class="navbar-item">Ordenes de venta</a>
+					<a class="navbar-item">Ordenes de compra</a>
+										
+					</div>
+				</div>
+
+			<%= link_to 'Ganancias', dashboard_path, class: "navbar-item"%>
+			<%= link_to 'Mensajes', dashboard_path, class: "navbar-item"%>
+
+
+				<div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link">Configuraciones</a> <!--Settings -->
+
+					<div class="navbar-dropdown">
+					<a class="navbar-item">Metodos de pago</a>
+					<a class="navbar-item">Metodos de retiro</a>
+										
+					</div>
+				</div>
+
+
+
+					
+							<% if (!user_signed_in?) %>
+							<div class="columns">
+								<div class="column">
+										<button class= "button is-primary">
+									<%= link_to "Iniciar Sesión", new_user_session_path, method: :post %>
+										</button>
+								</div>
+								<div class="column">
+										<button class= "button is-primary">
+									<%= link_to "Registrate", new_user_registration_path, method: :post %>
+										</button>
+								</div>
+							</div>
+									
+
+                            
+                             
+							<!-- 
+							<li class="nav-item">
+								<a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Nuevo aviso</a>
+							</li>	-->
+                        <% else %>
+
+                            <!-- 
+							<li class="nav-item">
+								<a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Nuevo aviso</a>
+							</li>	-->
+							<div class="navbar-item has-dropdown is-hoverable">
+                           
+								<a class="navbar-link" ><%= current_user.nombre%><span></span>
+								</a>
+
+								<!-- Dropdown list -->
+								<div class="navbar-dropdown">
+                                    <%= link_to "Perfil", edit_user_registration_path, class:"navbar-item" %>
+									<a class="navbar-item" href="dashboard-my-ads.html">Mi avisos</a>
+									<a class="navbar-item" href="dashboard-favourite-ads.html">Avisos Favoritos</a>
+									<a class="navbar-item">Avisos Pendientes</a>
+                                    <a class="navbar-item">Mensajes</a>
+									
+                                    <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class:"navbar-item"%>
+									
+								</div> 
+							
+							</div>
+                        <% end %>
+						 
+									
+		</div>
+	</div>
+
+</nav>

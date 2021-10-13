@@ -14,6 +14,13 @@ gem 'devise'
 gem 'pg', '>= 0.18', '< 2.0'
 
 gem 'jquery-rails'
+gem "bulma-rails", "~> 0.9.1"
+gem 'noty-rails'
+gem 'omniauth'
+gem "omniauth-rails_csrf_protection"
+
+gem 'omniauth-facebook', '=5.0.0'
+
 
 
 # Use SCSS for stylesheets

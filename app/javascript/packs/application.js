@@ -7,10 +7,14 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-@import "~/bootstrap/scss/bootstrap"
+//import "~/bootstrap/scss/bootstrap"
 import "css/styles"
 import "@fortawesome/fontawesome-free/js/all"
+import "noty/lib/noty"
+import "noty/lib/themes/sunset"
 
+
+window.Noty = require('noty')
 
 //= require jquery
 //= require jquery_ujs
@@ -20,3 +24,8 @@ import "@fortawesome/fontawesome-free/js/all"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+function newFunction() {
+    window.Noty = require("noty");
+}
+
