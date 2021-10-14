@@ -7,7 +7,7 @@ before_action :authenticate_user!
 
   def update
       @user = current_user
-        if @user.update_attibutes(current_user_params)
+        if @user.update(current_user_params)
           flash[:notice] = "Guardado..."
         else
           flash[:alert] = "No se ha podido actualizar...."
@@ -17,6 +17,6 @@ before_action :authenticate_user!
 
   private
   def current_user_params
-    params.require(:user).permit(:from, :about,:status,:language)
+    params.require(:user).permit(:from, :about,:status,:language, :avatar)
   end  
 end
