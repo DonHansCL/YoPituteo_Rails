@@ -87,5 +87,20 @@ $sides: (top, bottom, left, right);
 
 
 
+.h-#{$space} {
+  margin-top: #{$space}px !important;
+}
 
+.is-horizontal-center {
+  justify-content: center
+}
 
+.small-title {
+  font-size: 10px;
+}
+
+.star-review {
+  color: #ffbf00;
+  font-size: 13px;
+  font-weight: 600;
+}
