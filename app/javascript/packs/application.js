@@ -3,7 +3,14 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import Rails from "@rails/ujs"
+//= require jquery
+//= require jquery_ujs
+//= require jquery.turbolinks
+//= require turbolinks
+
+
+
+import Rails from '@rails/ujs';
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
@@ -14,18 +21,27 @@ import "noty/lib/noty"
 import "noty/lib/themes/sunset"
 
 
-window.Noty = require('noty')
-
-//= require jquery
-//= require jquery_ujs
-
-
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
+
+window.Noty = require('noty')
+
+
+
 function newFunction() {
     window.Noty = require("noty");
 }
+
+
+$(document).ready(() => {
+    $('.toggle').on('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        $('#' + e.target.getAttribute('aria-controls')).toggleClass('is-hidden');
+    })
+})
 

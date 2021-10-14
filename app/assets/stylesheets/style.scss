@@ -82,14 +82,16 @@ $sides: (top, bottom, left, right);
   .p-#{$space} {
     padding: #{$space}px !important;
   }
-}
 
-
-
-
+  
 .h-#{$space} {
   margin-top: #{$space}px !important;
 }
+
+}
+
+
+
 
 .is-horizontal-center {
   justify-content: center

@@ -18,9 +18,9 @@ gem "bulma-rails", "~> 0.9.1"
 gem 'noty-rails'
 gem 'omniauth'
 gem "omniauth-rails_csrf_protection"
-
 gem 'omniauth-facebook', '=5.0.0'
 
+gem 'jquery-rails'
 
 
 # Use SCSS for stylesheets
