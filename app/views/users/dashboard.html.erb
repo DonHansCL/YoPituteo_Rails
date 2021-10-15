@@ -55,7 +55,7 @@
                                     <div class="content">
                                         <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-from', class: 'is-hidden'} do |f| %>
                                         <div class="field">
-                                            <%= f.text_field :ciudad, autofocus: true, autocomplte: 'form', class: 'input' %>
+                                            <%= f.text_field :ciudad, autofocus: true, autocomplete: 'form', class: 'input' %>
                                         </div>
                                         <a class="toggle button is-light" aria-controls="user-from">Cancelar</a>
                                         <%= f.submit "Guardar", class: "button is-danger"%>
@@ -115,7 +115,7 @@
                                     <div class="content">
                                         <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-about', class: 'is-hidden'} do |f| %>
                                         <div class="field">
-                                            <%= f.text_area :about, autofocus: true, autocomplte: 'form', class: 'input' %>
+                                            <%= f.text_area :about, autofocus: true, autocomplete: 'form', class: 'input' %>
                                         </div>
                                         <a class="toggle button is-light" aria-controls="user-about">Cancelar</a>
                                         <%= f.submit "Guardar", class: "button is-danger"%>
@@ -143,7 +143,7 @@
                                     <div class="content">
                                         <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-language', class: 'is-hidden'} do |f| %>
                                         <div class="field">
-                                            <%= f.text_field :language, autofocus: true, autocomplte: 'form', class: 'input' %>
+                                            <%= f.text_field :language, autofocus: true, autocomplete: 'form', class: 'input' %>
                                         </div>
                                         <a class="toggle button is-light" aria-controls="user-language">Cancelar</a>
                                         <%= f.submit "Guardar", class: "button is-danger"%>
@@ -153,7 +153,18 @@
                                 <hr class="h-10">
                                 
                                 <!-- Linked Account -->
-                                <article class="media"></article>
+                                <article class="media">
+                                    <div class="content">
+                                        <p>
+                                            <strong>Cuenta vinculada</strong><br/>
+                                            <% if current_user.uid%>
+                                                <span class="has-text-success">Facebook verificado</span>
+                                            <% else%>
+                                                <%= link_to 'Conectate con Facebook', user_facebook_omniauth_authorize_path, class:"has-text-danger" %>
+                                            <% end %>
+                                        </p>
+                                    </div>
+                                </article>
 
                             </div>
                         </div>
