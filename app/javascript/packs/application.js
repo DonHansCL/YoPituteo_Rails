@@ -45,3 +45,6 @@ $(document).ready(() => {
     })
 })
 
+
+require("trix")
+require("@rails/actiontext")

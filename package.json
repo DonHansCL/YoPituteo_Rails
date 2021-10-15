@@ -4,6 +4,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@rails/actioncable": "^6.0.0",
+    "@rails/actiontext": "6.1.4-1",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.1.4-1",
     "@rails/webpacker": "5.4.3",
@@ -12,6 +13,7 @@
     "jquery": "^3.6.0",
     "noty": "^3.2.0-beta-deprecated",
     "popper.js": "^1.16.1",
+    "trix": "1.2.0",
     "turbolinks": "^5.2.0",
     "webpack": "4.46.0",
     "webpack-cli": "3.3.12"
