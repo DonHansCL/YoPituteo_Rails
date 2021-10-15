@@ -157,7 +157,7 @@
                                     <div class="content">
                                         <p>
                                             <strong>Cuenta vinculada</strong><br/>
-                                            <% if current_user.uid%>
+                                            <% if current_user.provider%>
                                                 <span class="has-text-success">Facebook verificado</span>
                                             <% else%>
                                                 <%= link_to 'Conectate con Facebook', user_facebook_omniauth_authorize_path, class:"has-text-danger" %>

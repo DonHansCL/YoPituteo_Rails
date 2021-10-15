@@ -1,0 +1,152 @@
+<section class="section">
+    <div class="container">
+        <div class="columns">
+        
+            <!-- LEFT SIDE -->
+            <div class="column is-one-third">
+                <div class="columns is-multiline">
+
+                    <!-- Top Card -->
+                    <div class="column is-full">
+                        <div class="card">
+
+                            <!-- Avatar -->
+                            <div class="card-content is-horizontal-center is-flex">
+                                <figure class="image is-128x128">
+                                    <%= image_tag avatar_url(@user), class: "is-rounded" %>
+                                </figure>
+                            </div>
+                            
+                            <div class="card-content">
+
+                                <!-- Upload Button -->
+                                <div class="content has-text-centered">
+                                    <p class="title is-5"><%= @user.nombre %></p>
+
+                                </div>
+                                <hr class="n-10">
+                                
+                                <!-- Member -->
+                                <article class="media">
+                                <div class="media-content">Miembro desde:</div>    
+                                <div class="media-right">
+                                    <strong><%= @user.created_at.strftime('%b %Y') %></strong>
+                                </div>
+                                </article>
+                                <hr class="h-10">
+                                
+                                <!-- From -->
+                                <article class="media">
+                                   
+                                    <div class="media-content">De:</div>
+                                        <div class="media-right">
+                                            <strong><%= @user.ciudad %></strong>
+                                        </div>
+                                                                        
+                                </article>                                
+                                <hr class="h-10">
+
+                                <!-- Online Status -->
+                                <article class="media">
+                                   
+                                        <div class="media-content">Estado de conexión</div>
+                                            <div class="media-right">
+                                                 <strong><% if @user.status %> Online <% else %> Offline <% end %></strong>
+                                            </div>
+                                   
+                                </article>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Card -->
+                    <div class="column is-full">
+                        <div class="card">
+                            <div class="card-content">
+
+                                <!-- About -->
+                                <article class="media">
+                                        <div class="media-content">
+                                           <p>
+                                            <strong>Acerca de ti</strong>
+                                            <br>
+                                            <%= @user.about %>
+                                           </p>
+                                        </div>
+                                                                                                                                       
+                                </article>
+                                <hr class="h-10">
+
+                                <!-- Languages -->
+                                <article class="media">
+                                        <div class="media-content">
+                                           <p>
+                                            <strong>Idioma</strong>
+                                            <br>
+                                            <%= @user.language %>
+                                           </p>
+                                        </div>
+                                                                                            
+                                </article>
+                                <hr class="h-10">
+                                
+                                <!-- Linked Account -->
+                                <article class="media">
+                                    <div class="content">
+                                        <p>
+                                            <strong>Cuenta vinculada</strong><br/>
+                                            <% if @user.provider%>
+                                                <span class="has-text-success">Facebook verificado</span>
+                                            <% else%>
+                                                <span class="has-text-danger">Facebook no verificado</span>
+                                            <% end %>
+                                        </p>
+                                    </div>
+                                </article>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="column">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-tittle">Ultimos comentarios</div>
+                    </div>
+                    <div class="card-content">
+                    <!-- COMENTARIOS DE PRUEBA -->
+                    <article class="media">
+
+                        <figure class="media-left">
+                                <p class="image is-64x64">
+                                      <%= image_tag avatar_url(@user), class: "is-rounded" %>
+                                </p>
+                        </figure>
+
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <strong>John Smith</strong><br/>
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel voluptate temporibus vitae inventore quo voluptatibus possimus earum veritatis ex tenetur assumenda rem maiores voluptatem, tempora eaque reprehenderit dicta quos neque.
+                                </p>
+                                <small>31 minutos</small>
+                            </div>
+                        </div>
+
+                        <div class="media-right">
+                            <span class="star-review"><i class="fa fa-star"></i>5.0</span>
+                        </div>
+
+                    </article>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
