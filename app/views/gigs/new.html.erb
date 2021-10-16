@@ -1,0 +1,60 @@
+
+<section class="section">
+  <div class="container">
+    
+
+      <!-- 5 STEPS -->
+         
+     <ul class="steps my-step-style has-content-centered ">
+      <li class="steps-segment is-active">
+        <span class="steps-marker">1</span>
+        <div class="steps-content">
+          <p class="is-size-5">General</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker">2</span>
+        <div class="steps-content">
+          <p class="is-size-5">Precio</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker">3</span>
+        <div class="steps-content">
+          <p class="is-size-5">Descripción</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker">4</span>
+        <div class="steps-content">
+          <p class="is-size-5">Galería</p>
+        </div>
+      </li>
+      <li class="steps-segment">
+        <span class="steps-marker">5</span>
+        <div class="steps-content">
+          <p class="is-size-5">Publicar</p>
+        </div>
+      </li>
+    </ul>
+
+      <!-- FORM TO CREATE A NEW GIG HERE-->
+
+      <%= form_for  @gig, html: {class: "steps-content m-l-100 m-r-100"} do |f|%>
+        <div class="field">
+            <label class="label">Titulo del aviso</label>
+            <%= f.text_area :title, autocomplete: "title", class: "textarea" %>
+        </div>
+        <div class="field">
+            <label class="label">Categoria</label>
+            <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] }) ) %>
+        </div>
+        <div class="field is-grouped is-grouped-centered m t-25">
+            <a href="" class="button is-light">Cancelar</a>&nbsp&nbsp
+            <%= f.submit "Guardar & continuar", class: "button is-primary" %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</section>

@@ -20,6 +20,8 @@ gem 'omniauth'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth-facebook', '=5.0.0'
 
+gem 'faker', '=1.9.3'
+
 gem 'jquery-rails'
 
 

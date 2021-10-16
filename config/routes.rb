@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+  root "home#index"
+
   get '/dashboard', to: 'users#dashboard' #esto genera el dashboard_path
   get '/users/:id', to: 'users#show'
 
   post '/users/edit', to: 'users#update'  #users_edit_path
 
-  root "home#index"
+ 
+  resources :gigs
 
   devise_for :users,  controllers: {omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' },
               path:'', 
