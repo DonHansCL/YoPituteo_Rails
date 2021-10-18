@@ -29,7 +29,7 @@ ActiveStorage.start()
 
 
 window.Noty = require('noty')
-
+window.Dropzone = require('dropzone')
 
 
 function newFunction() {

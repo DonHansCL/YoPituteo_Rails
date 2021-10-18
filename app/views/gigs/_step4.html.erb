@@ -1,4 +1,3 @@
-<% if @step ==4 %>
 <div class="step-content <%= 'is-hidden' if @step != 4 %>">
     <div class="field">
         <label for="" class="label">Link de Youtube</label>
@@ -9,12 +8,41 @@
         <div class="control">
             <div class="m-b-20">
                 <!-- Zona de carga de fotos -->
-          
+                <div class="dropzone" id="myDropzone" action="/gigs/<%= @gig.id %>/upload_photo"></div>
             </div>
             <div class="columns is-multiline" style: width: 100% %>
                 <!-- Fotos subidas -->
+                <% @gig.photos.each do |photo| %>
+                    <div class="column is-one-fifth">
+                        <div class="card is-image">
+                            <div class="card-image">
+                                <%= link_to 'Eliminar', delete_photo_gig_url(photo_id: photo.id, id: @gig.id, step: @step), 
+                                method: :delete,
+                                data: {confirm: "¿Estás seguro?"},
+                                class: "delete delete-file is-pulled-right",
+                                style: "z-index: 100" %> 
+
+                                <figure class="image is-4by3">
+                                    <%= image_tag url_for(photo) %>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
             </div>
         </div>
     </div>
 </div>
- <% end %>
+
+<script>
+    Dropzone.options.myDropzone = {
+        paramName: "file",
+        maxFilessize: 2,
+        acceptedFiles: "image/*",
+        init: function() {
+            this.on('complete', function (file) {
+                location.reload();
+            })
+        }
+    }
+</script>

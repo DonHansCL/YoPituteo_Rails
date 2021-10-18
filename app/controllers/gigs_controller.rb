@@ -1,8 +1,10 @@
 class GigsController < ApplicationController
   
+  protect_from_forgery except: [:upload_photo]
   before_action :authenticate_user!, except: [:show]
   before_action :set_gig, except: [:new, :create]
-  before_action :is_authorised, only: [:edit, :update]
+  before_action :is_authorised, only: [:edit, :update, :upload_photo, :delete_photo]
+  before_action :set_step, only: [:update, :edit]
   
   def new
     @gig = current_user.gigs.build
@@ -20,18 +22,96 @@ class GigsController < ApplicationController
     end  
   end
 
+
   def edit
     @categories = Category.all
-    @step = params[:step].to_i
   end
 
+
   def update
+
+    if @step == 2
+      gig_params[:pricings_attributes].each do |index, pricing|
+          if @gig.has_single_pricing && pricing[:pricing_type] != Pricing.pricing_types.key(0)
+            next;
+          else
+            if pricing[:title].blank? || pricing[:description].blank? || pricing[:delivery_time].blank? || pricing[:price].blank?
+              return redirect_to request.referrer, flash: {error: "Precio invalido"}
+            end
+          end
+      end
+    end
+
+    if @step ==3 && gig_params[:description].blank?
+      return redirect_to request.referrer, flash: {error: "Descripción o puede estar en blanco"}
+    end
+
+    if @step ==4 && @gig.photos.blank?
+      return redirect_to request.referrer, flash: {error: "No tienes ninguna foto"}
+    end
+
+
+    if @step ==5
+      @gig.pricings.each do |pricing|
+        if @gig.has_single_pricing && !pricing.basic?
+          next;
+        else
+          if pricing[:title].blank? || pricing[:description].blank? || pricing[:delivery_time].blank? || pricing[:price].blank?
+            return redirect_to edit_gig_path(@gig, step: 2), flash: {error: "Precio invalido"}
+          end
+        end        
+    end
+
+    if @gig.description.blank?
+        return redirect_to edit_gig_path(@gig, step: 3), flash: {error: "Descripción o puede estar en blanco"}
+      elsif @gig.photos.blank?
+        return redirect_to edit_gig_path(@gig, step: 4), flash: {error: "No tienes ninguna foto"}
+      end
+    end
+
+    if @gig.update(gig_params)
+      flash[:notice] = "Guardado..."
+    else
+      return redirect_to request.referrer, flash: {error: @gig.errors.full_messages}
+    end
+
+
+    if @step < 5
+      redirect_to edit_gig_path(@gig, step: @step + 1)
+    else
+      redirect_to dashboard_path
+    end
+
   end
+
+
 
   def show
   end
 
+
+  def upload_photo
+    @gig.photos.attach(params[:file])
+    render json: { success:true }
+  end
+
+  def delete_photo
+    @image = ActiveStorage::Attachment.find(params[:photo_id])
+    @image.purge
+    redirect_to edit_gig_path(@gig, step: 4)
+  end
+
+
+
+
   private
+
+  def set_step
+    @step = params[:step].to_i > 0 ? params[:step].to_i : 1
+    if @step > 5
+      @step = 5
+    end
+  end
 
   def set_gig
     @gig = Gig.find(params[:id])
@@ -42,7 +122,7 @@ class GigsController < ApplicationController
   end
 
   def gig_params
-    params.require(:gig).permit(:title, :video, :active, :category_id, :has_single_pricing, 
+    params.require(:gig).permit(:title, :video, :description, :active, :category_id, :has_single_pricing, 
                         pricings_attributes: [:id, :title, :description, :delivery_time, :price, :pricing_type])
   end  
 

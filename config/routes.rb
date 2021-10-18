@@ -7,9 +7,14 @@ Rails.application.routes.draw do
 
   post '/users/edit', to: 'users#update'  #users_edit_path
 
- 
-  resources :gigs
+  resources :gigs do
+    member do
+      delete :delete_photo
+      post :upload_photo
+    end
+  end
 
+  
   devise_for :users,  controllers: {omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' },
               path:'', 
               path_names: {sign_up: 'register', sign_in: 'login', edit: 'edit_profile', sign_out:'logout'}
