@@ -9,6 +9,7 @@
     "@rails/ujs": "^6.1.4-1",
     "@rails/webpacker": "5.4.3",
     "bootstrap": "^5.1.2",
+    "bulma": "^0.9.3",
     "bulma-o-steps": "^1.1.0",
     "bulma-steps": "^2.2.1",
     "expose-loader": "^3.0.0",

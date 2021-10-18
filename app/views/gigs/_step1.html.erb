@@ -1,0 +1,15 @@
+<div class="step-content <%= 'is-hidden' if @step != 1 %>">
+    <div class="field">
+            <label class="label">Titulo del aviso</label>
+            <%= f.text_area :title, autocomplete: "title", class: "textarea" %>
+    </div>
+        <div class="field">
+            <label class="label">Categoria</label>
+            <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] },class: "is-primary", selected: @gig.category_id) ) %>
+        </div>
+        <div class="field">
+           <label class="checkbox">
+            <%= f.check_box :has_single_pricing, class: "checkbox", onchange: "this.form.submit();" %> Tiene precio único
+           </label>
+        </div>
+</div>

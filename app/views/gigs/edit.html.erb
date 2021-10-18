@@ -1,2 +1,55 @@
-<h1>Gigs#edit</h1>
-<p>Find me in app/views/gigs/edit.html.erb</p>
+<section class="section">
+  <div class="container">
+    
+
+      <!-- 5 STEPS -->
+         
+     <ul class="steps my-step-style has-content-centered ">
+      <li class="steps-segment <%= 'is-active' if @step == 1 %> <%= 'is-completed' if @step > 1 %>">
+        <span class="steps-marker">1</span>
+        <div class="steps-content">
+          <p class="is-size-5">General</p>
+        </div>
+      </li>
+      <li class="steps-segment <%= 'is-active' if @step == 2 %> <%= 'is-completed' if @step > 2 %>">
+        <span class="steps-marker">2</span>
+        <div class="steps-content">
+          <p class="is-size-5">Precio</p>
+        </div>
+      </li>
+      <li class="steps-segment <%= 'is-active' if @step == 3 %> <%= 'is-completed' if @step > 3 %>">
+        <span class="steps-marker">3</span>
+        <div class="steps-content">
+          <p class="is-size-5">Descripción</p>
+        </div>
+      </li>
+      <li class="steps-segment <%= 'is-active' if @step == 4 %> <%= 'is-completed' if @step > 4 %>">
+        <span class="steps-marker">4</span>
+        <div class="steps-content">
+          <p class="is-size-5">Galería</p>
+        </div>
+      </li>
+      <li class="steps-segment <%= 'is-active' if @step == 5 %> <%= 'is-completed' if @step > 5 %>">
+        <span class="steps-marker">5</span>
+        <div class="steps-content">
+          <p class="is-size-5">Publicar</p>
+        </div>
+      </li>
+    </ul>
+
+      <!-- FORM TO CREATE A NEW GIG HERE-->
+
+      <%= form_for  @gig, html: {class: "steps-content m-l-100 m-r-100"} do |f| %>
+        <%= hidden_field_tag 'step', @step %>
+
+        <%= render 'step1', f: f %>
+        <%= render 'step2', f: f %>
+        <%= render 'step3', f: f %>
+        <%= render 'step4', f: f %>
+        <%= render 'step5', f: f %>
+
+      <% end %>
+
+    </div>
+  
+</section>
