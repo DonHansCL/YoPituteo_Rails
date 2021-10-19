@@ -30,14 +30,14 @@ ActiveStorage.start()
 
 window.Noty = require('noty')
 window.Dropzone = require('dropzone')
-
+window.BulmaCarousel = require("bulma-extensions/bulma-carousel/dist/js/bulma-carousel")
 
 function newFunction() {
     window.Noty = require("noty");
 }
 
 
-$(document).ready(() => {
+$(document).ready(() => {    //=aqui probe $(document).on('turbolinks:load',() => {    / .on('turbolinks:load', function()   /       document.addEventListener("turbolinks:load", function() {           /$(document).on('ready turbolinks:load', function() {     /pero no funcionó
     $('.toggle').on('click', (e) => {
         e.stopPropagation();
         e.preventDefault();

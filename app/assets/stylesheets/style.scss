@@ -88,6 +88,10 @@ $sides: (top, bottom, left, right);
   margin-top: #{$space}px !important;
 }
 
+
+.f-#{$space} {
+  font-size: #{$space}px !important;
+}
 }
 
 

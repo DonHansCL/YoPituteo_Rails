@@ -46,6 +46,20 @@
     <%= render "shared/navbar" %>
     <%= render "shared/notification" %>
 
+  
+
+
+
+
+<script>
+$(document).ready(() => {    //=aqui probe $(document).on('turbolinks:load',() => {    / .on('turbolinks:load', function()   /       document.addEventListener("turbolinks:load", function() {           /$(document).on('ready turbolinks:load', function() {     /pero no funcionó
+    $('.toggle').on('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        $('#' + e.target.getAttribute('aria-controls')).toggleClass('is-hidden');
+    })
+})
+</script>
 
 
     <%= yield %>

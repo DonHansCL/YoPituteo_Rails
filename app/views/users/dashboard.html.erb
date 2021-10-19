@@ -2,6 +2,24 @@
     <div class="container">
         <div class="columns">
         
+
+
+
+
+<<script>
+$(document).on('turbolinks:load',() => {    //=aqui probe $(document).on('turbolinks:load',() => {    / .on('turbolinks:load', function()   /       document.addEventListener("turbolinks:load", function() {           /$(document).on('ready turbolinks:load', function() {     /pero no funcionó
+    $('.toggle').on('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        $('#' + e.target.getAttribute('aria-controls')).toggleClass('is-hidden');
+    })
+})
+</script>>
+
+
+
+
+
             <!-- LEFT SIDE -->
             <div class="column is-one-third">
                 <div class="columns is-multiline">
@@ -178,14 +196,66 @@
                 <div class="columns is-multiline">
 
                     <!-- Create New Gig -->
-                    <div class="column is-one-third has-text-centered"></div>
+<div class="column is-one-third has-text-centered">
+    <%= link_to new_gig_path do %>
+        <div class="card">
 
-                    <!-- Sample Gig -->
-                    <div class="column is-one-third has-text-centered"></div>
-                    
-                </div>
+            <div class="card-image card-content is-horizontal-center is-flex ">
+                <figure class="image is-128x128 ">
+                    <!-- Plus Icon Here -->
+                    <%= image_tag 'icon_add.png' %>
+                </figure>
             </div>
-            
+
+            <div class="card-content">
+                <strong>Create a new gig</strong>
+            </div>    
+
+        </div>
+    <% end %>    
+</div>
+
+
+<!-- Sample Gig -->
+<% current_user.gigs.each do |gig| %>
+
+<div class="column is-one-third">
+    <div class="card">
+        <div class="card-image">
+            <%= link_to edit_gig_path(gig) do %>
+
+                <figure class="image is-4by3">
+                    <!-- Gig Cover Image Here -->
+                    <%= image_tag gig_cover(gig) %>
+                </figure>
+            <% end %>
+        </div>
+
+        <div class="card-content p-t-5 p-b-5">
+            <p class="subtitle is-6 m-b-5"><%= link_to gig.title, gig_path(gig)%></p>
+            <span class="star-review"><i class="fa fa-star"></i>
+                4.8 <span class="has-text-primary">(23)</span>
+            </span>                                        
+        </div>
+
+        <footer class="card-footer">
+            <% basic_price = gig.pricings.find{ |p| p.pricing_type == 'basic' } %>
+            <a class="has-text-danger is-block card-footer-item has-text-right">
+                <% if !basic_price.nil? %>
+                    <span class="small-title">DESDE</span> 
+                    <strong>$<%= basic_price.price %></strong>   
+                <% else %>
+                    <strong>
+                        <span class="small-title has-text-dark">SIN PRECIO</span>
+                    </strong>
+                <% end %>                                         
+            </a>
+        </footer>  
+
+    </div>
+</div>
+<% end %>  
+
         </div>
     </div>
 </section>
