@@ -7,6 +7,7 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require turbolinks
+//= require bulma-extensions
 
 
 
@@ -19,7 +20,7 @@ import "css/styles"
 import "@fortawesome/fontawesome-free/js/all"
 import "noty/lib/noty"
 import "noty/lib/themes/sunset"
-
+import 'bulma-extensions';
 
 
 Rails.start()
@@ -30,14 +31,16 @@ ActiveStorage.start()
 
 window.Noty = require('noty')
 window.Dropzone = require('dropzone')
-window.BulmaCarousel = require("bulma-extensions/bulma-carousel/dist/js/bulma-carousel")
+window.BulmaCarousel = require("bulma-extensions/bulma-carousel/dist/js/bulma-carousel.min.js")
+
+
 
 function newFunction() {
     window.Noty = require("noty");
 }
 
 
-$(document).ready(() => {    //=aqui probe $(document).on('turbolinks:load',() => {    / .on('turbolinks:load', function()   /       document.addEventListener("turbolinks:load", function() {           /$(document).on('ready turbolinks:load', function() {     /pero no funcionó
+$(document).on('turbolinks:load', () => {    //=aqui probe $(document).on('turbolinks:load',() => {    / .on('turbolinks:load', function()   /       document.addEventListener("turbolinks:load", function() {           /$(document).on('ready turbolinks:load', function() {     /pero no funcionó
     $('.toggle').on('click', (e) => {
         e.stopPropagation();
         e.preventDefault();

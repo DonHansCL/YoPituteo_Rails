@@ -6,6 +6,7 @@ environment.plugins.prepend('Provide',
   new webpack.ProvidePlugin({
     $: 'jquery',
     jQuery: 'jquery',
+    'window.jquery': 'jquery',
     Popper: ['popper.js', 'default'],
     toastr: 'toastr/toastr',
     ApexCharts: ['apexcharts', 'default'],
