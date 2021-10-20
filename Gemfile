@@ -24,6 +24,7 @@ gem 'faker', '=1.9.3'
 gem 'bulma-extensions-rails', '~> 6.2', '>= 6.2.7'
 
 gem 'jquery-rails'
+gem 'bulmajs-rails'
 
 
 # Use SCSS for stylesheets

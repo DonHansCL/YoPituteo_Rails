@@ -8,8 +8,14 @@
 //= require jquery.turbolinks
 //= require turbolinks
 //= require bulma-extensions
+//= require bulma
+// All of bulma
+import Bulma from '@vizuaalog/bulmajs';
 
+// Only the plugins you need
+import Navbar from '@vizuaalog/bulmajs/src/plugins/navbar';
 
+require("jquery")
 
 import Rails from '@rails/ujs';
 import Turbolinks from "turbolinks"

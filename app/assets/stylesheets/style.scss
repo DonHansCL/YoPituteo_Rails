@@ -135,3 +135,16 @@ $sides: (top, bottom, left, right);
 #tab-content p.is-active {
   display: block;
 }
+
+
+
+
+
+.tabs-content li {
+  display: none;
+  list-style: none;
+}
+
+.tabs-content li.is-active {
+  display: block;
+}
