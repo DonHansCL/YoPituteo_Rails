@@ -101,7 +101,16 @@
                             </div>
 
             <% if (!user_signed_in? && @gig.active) || (user_signed_in? && @gig.active && @gig.user_id != current_user.id) %>
-                <button class="button is-fullwidth is-danger">Continuar ($<%= p.price %>)</button>
+
+
+
+
+               <%= form_for([@gig, @gig.orders.new]) do |f| %>
+                   <%= hidden_field_tag 'pricing_type', p.pricing_type %>
+                   <%= f.submit "Continue ($#{p.price})", class: "button is-fullwidth is-danger", data: {confirm: "¿Estás seguro?"} %>
+               <% end %>
+
+                
             <% else %>
                 <button class="button is-fullwidth is-danger" disabled>No disponible</button>
             <% end %>
