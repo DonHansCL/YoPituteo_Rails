@@ -40,7 +40,7 @@ function newFunction() {
 }
 
 
-$(document).on('turbolinks:load', () => {    //=aqui probe $(document).on('turbolinks:load',() => {    / .on('turbolinks:load', function()   /       document.addEventListener("turbolinks:load", function() {           /$(document).on('ready turbolinks:load', function() {     /pero no funcionó
+$(document).ready(() => {    //=aqui probe $(document).on('turbolinks:load',() => {    / .on('turbolinks:load', function()   /       document.addEventListener("turbolinks:load", function() {           /$(document).on('ready turbolinks:load', function() {     /pero no funcionó
     $('.toggle').on('click', (e) => {
         e.stopPropagation();
         e.preventDefault();
