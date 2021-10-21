@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root "home#index"
+   root 'pages#home'
 
   get '/dashboard', to: 'users#dashboard' #esto genera el dashboard_path
   get '/users/:id', to: 'users#show'

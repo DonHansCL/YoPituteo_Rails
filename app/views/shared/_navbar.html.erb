@@ -1,25 +1,35 @@
- 	<section>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-lg">
-				<nav class="navbar navbar-expand-lg navbar-light navigation">
-				
-				<!--AQUI VA EL LOGO -->
-				<a class="navbar-brand" href=<%= root_path %>><img src=<%=asset_path("ypletras.png") %> alt="logo"></a>
+ 	<nav class="navbar is-fullhd" role="navigation" aria-label="main navigation">
+	 	<div class="navbar-barnd">
+		 	<a class="navbar-item" href="/">
+			 	<!--AQUI VA EL LOGO -->
+				<h1 class="title is-3 has-text-primary ">YoPituteo.cl</h1>
+			</a>
+			<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+				<span class="aria-hidden"></span>
+				<span class="aria-hidden"></span>
+				<span class="aria-hidden"></span>
+			</a>
+		</div>
 
+		<div id="navbarBasicExample" class="navbar-menu">
+			<div class="navbar-start">
+				<div class="navbar-item">
+					<div class="field has-addons">
+						<div class="control">
+							<input type="text" class="input" placeholder="Buscar servicios">
+						</div>
+						<div class="control">
+							<a class="button is-danger">Buscar</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-						
+			<div class="navbar-end">
+				<%= link_to 'Nuevo aviso', new_gig_path, class: "navbar-item"%>
+				<a class="navbar-item">Ver Pitutos</a>
 
-
-						<ul class="navbar-nav ml-auto mt-10">
-
-
-							<% if (!user_signed_in?) %>
+				<% if (!user_signed_in?) %>
 							<div class="navbar-item has-dropdown is-hoverable">
 							<div class="columns">
 								<div class="column">
@@ -43,12 +53,7 @@
 							</li>	-->
                         <% else %>
 
-                            <!-- 
-							<li class="nav-item">
-								<a class="nav-link text-white add-button" href="ad-listing.html"><i class="fa fa-plus-circle"></i> Nuevo aviso</a>
-							</li>	-->
-							<%= link_to 'Nuevo aviso', new_gig_path, class: "button is-primary"%>
-
+                          
 							<div class="navbar-item has-dropdown is-hoverable">
 								<a class="navbar-link">
 								<figure class="image is-34x34 m-r-5">
@@ -72,15 +77,13 @@
 							
 							</div>
                         <% end %>
-						</ul> 
-					</div>
-				</nav>
+
 			</div>
+
 		</div>
-	</div>
-
-
-</section>	
+	 </nav>
+	 
+	 
 
 <% if (user_signed_in?) && !current_page?(root_path) && !current_page?("/gigs/#{params[:id]}") && !current_page?("/users/#{params[:id]}")%>
 

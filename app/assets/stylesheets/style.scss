@@ -1,65 +1,12 @@
-@import 'variables.scss';
-
-@import 'media-queries.scss';
-
-@import 'typography.scss';
-
-@import 'tabs.scss';
-
-@import 'lists.scss';
-
-@import 'common.scss';
-
-@import 'backgrounds.scss';
-
-@import 'navigation.scss';
-
-@import 'hero-area.scss';
-
-@import 'category-slider.scss';
-
-@import 'user-dashboard.scss';
-
-@import 'homepage.scss';
-
-@import 'category.scss';
-
-@import 'products.scss';
-
-@import 'widgets.scss';
-
-@import 'header.scss';
-
-@import 'call-to-action.scss';
-
-@import 'store.scss';
-
-@import 'store-single.scss';
-
-@import 'submit-coupon.scss';
-
-@import 'blog.scss';
-
-@import 'popup.scss';
-
-@import 'ad-listing.scss';
-
-@import 'ad-list-view.scss';
-
-@import 'terms-condition.scss';
-
-@import 'package.scss';
-
-@import 'about-us.scss';
-
-@import 'contact-us.scss';
-
-@import '404.scss';
-
-@import 'footer.scss';
 
 @import 'noty/lib/noty';
 @import 'noty/lib/themes/sunset';
+
+body {
+  margin: 0;
+  padding: 0;
+
+}
 
 
 $spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100);
@@ -147,4 +94,11 @@ $sides: (top, bottom, left, right);
 
 .tabs-content li.is-active {
   display: block;
+}
+
+.has-bg-img {
+ 
+ background: url('/assets/home/home_bg.png') center center;
+ background-size: cover;
+
 }
