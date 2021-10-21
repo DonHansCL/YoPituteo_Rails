@@ -1,0 +1,44 @@
+<section class="section">
+    <div class="container">
+        <p class="title">Administrar órdenes de compra</p>
+
+        <table class="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Titulo</th>
+                    <th>Nombre del vendedor</th>
+                    <th>Fecha de entrega</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if @orders.blank? %>
+                    <tr>
+                        <td colspan="6" class="has-text-centered"><h1>NADA QUE MOSTRAR AQUÍ</h1></td>
+                    </tr>
+                <% end %>
+
+                <% @orders.each do |o| %>
+                    <tr>
+                        <td><%= o.created_at.strftime('%d %b %Y') %></td>
+                        <td><%= link_to o.title, gig_path(o.gig) %></td>   
+                        <td><%= o.seller_name %></td>
+                        <td><%= o.due_date.strftime('%d %b %Y') %></td>                                             
+                        <td><%= o.amount %></td>
+                        <td>
+                        <span class="tag <%= 'is-warning' if o.enprogreso? %><%= 'is-success' if o.completada? %>">   
+                        <%= o.status.capitalize %>                  
+                        </span>                       
+                        </td>
+                        <td>
+                            <%= link_to  "Completar", complete_order_path(o), method: :put, class:"button is-small is-primary #{'is-hidden' if o.completada?}" %>
+                        </td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+    </div>
+</section>

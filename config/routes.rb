@@ -4,8 +4,13 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#dashboard' #esto genera el dashboard_path
   get '/users/:id', to: 'users#show'
+  get '/selling_orders', to: 'orders#selling_orders'
+  get '/buying_orders', to: 'orders#buying_orders'
+
 
   post '/users/edit', to: 'users#update'  #users_edit_path
+
+  put '/orders/:id/complete', to: 'orders#complete', as: 'complete_order' #complete_order_path
 
   resources :gigs do
     member do

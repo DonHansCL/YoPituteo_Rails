@@ -15,6 +15,31 @@ class OrdersController < ApplicationController
         redirect_to request.referrer
     end
 
+
+    def selling_orders
+        @orders = current_user.selling_orders
+    end
+
+    def buying_orders
+        @orders = current_user.buying_orders
+    end
+
+    def complete
+        @order = Order.find(params[:id])
+
+        if !@order.completada?
+            if @order.completada! # = a order.status = 1
+                flash[:notice] = "Guardado..."
+            else
+                flash[:alert] = "Algo salio mal..."
+            end
+
+            redirect_to request.referrer
+        end    
+    end
+    
+
+
     private
 
     def charge(gig, pricing)

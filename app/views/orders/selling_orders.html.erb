@@ -1,0 +1,40 @@
+<section class="section">
+    <div class="container">
+        <p class="title">Administrar órdenes de venta</p>
+
+        <table class="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Titulo</th>
+                    <th>Nombre del comprador</th>
+                    <th>Fecha de entrega</th>
+                    <th>Cantidad</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if @orders.blank? %>
+                    <tr>
+                        <td colspan="6" class="has-text-centered"><h1>NADA QUE MOSTRAR AQUÍ</h1></td>
+                    </tr>
+                <% end %>
+
+                <% @orders.each do |o| %>
+                    <tr>
+                        <td><%= o.created_at.strftime('%d %b %Y') %></td>                        
+                        <td><%= link_to o.title, gig_path(o.gig) %></td>  
+                        <td><%= o.buyer_name %></td> 
+                        <td><%= o.due_date.strftime('%d %b %Y') %></td>
+                        <td><%= o.amount %></td>
+                        <td>
+                        <span class="tag <%= 'is-warning' if o.inprogress? %><%= 'is-sucess' if o.completed? %>">
+                        <%= o.status.capitalize %>
+                        </span>                       
+                        </td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+    </div>
+</section>

@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.date :due_date
       t.string :title
       t.float :amount
-      t.integer :status, deafult: 0
+      t.integer :status, default: 0
       t.string :seller_name
       t.string :buyer_name
       t.references :gig, null: true, foreign_key: true
