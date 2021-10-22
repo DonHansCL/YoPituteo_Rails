@@ -1,5 +1,5 @@
- 	<nav class="navbar is-fullhd" role="navigation" aria-label="main navigation">
-	 	<div class="navbar-barnd">
+ 	<nav class="navbar" role="navigation" aria-label="main navigation">
+	 	<div class="navbar-brand">
 		 	<a class="navbar-item" href="/">
 			 	<!--AQUI VA EL LOGO -->
 				<h1 class="title is-3 has-text-primary ">YoPituteo.cl</h1>
@@ -108,8 +108,9 @@
 					<a class="navbar-link">Necesito</a> <!--BUYING -->
 
 					<div class="navbar-dropdown">
-					<a class="navbar-item">Crear aviso</a>
-					<a class="navbar-item">Administrar solicitudes</a>
+					<%= link_to 'Publicar Solicitud', new_request_path, class: "navbar-item"%>
+					<%= link_to 'Administrar Solicitudes', requests_path, class: "navbar-item"%>
+
 										
 					</div>
 				</div>
@@ -119,7 +120,8 @@
 					<a class="navbar-link">Solicitudes</a> <!--request -->
 
 					<div class="navbar-dropdown">
-					<a class="navbar-item">Solicitudes Activas</a>
+					<%= link_to 'Solicitudes Activas', all_requests_path, class: "navbar-item"%>
+					
 					<a class="navbar-item">Ofertas enviadas</a>
 										
 					</div>

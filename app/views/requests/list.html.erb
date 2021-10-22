@@ -1,0 +1,66 @@
+<section class="section">
+    <div class="container">
+        <p class="title">
+            Todas las solicitudes
+            <%= link_to  'Publica una solicitud', new_request_path, class:"button is-primary is-pulled-right" %>
+        </p>
+        <div class="card">
+            <div class="card-header">
+                <%= form_tag '', method: :get do %>
+                    <div class="field p-10">
+                        <div class="select">
+                            <%= select_tag 'category', content_tag(:option, 'Todas las categorias', value: "") +
+                                                        options_for_select(@categories.map { |c| [c.name, c.id] },
+                                                        selected: @category_id),
+                                                        onchange: "this.form.submit();" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+            <div class="card-content">
+            
+                <table class="table is-fullwidth">
+                    <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Comprador</th>
+                                <th>Solicitud</th>
+                                <th class="has-text-centered">Ofertas</th>
+                                <th class="has-text-centered">Duración</th>
+                                <th class="has-text-centered">Presupuesto</th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <% if @requests.blank? %>
+                            <tr>
+                                <td COLSPAN="6" class="has-text-centered"><h1>NADA QUE MOSTRAR</h1></td>
+                            </tr>
+                        <% end %>
+                        <% @requests.each do |r| %>
+
+                            <tr>
+                                <td><%= r.created_at.strftime('%d %b %Y') %></td>
+                                <td>
+                                <figure class="image is-48x48">
+                                    <%= image_tag avatar_url(r.user), class: "is-rounded" %>
+                                </figure>
+                                </td>
+                                <td>
+                                    <%= link_to request_path(r), class: "tootip" do %>
+                                        <label for="" class="tooltip" data-tooltip="<%= r.description %>">
+                                            <%= r.title.truncate(25, separator: ' ') %>
+                                        </label>
+                                    <% end %>
+                                </td>
+                                <td class="has-text-centered">5</td>
+                                <td class="has-text-centered"><%= pluralize(r.delivery, 'día') %></td>
+                                <td class="has-text-centered"><%= r.budget %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            
+            </div>            
+        </div>
+    </div>
+</section>

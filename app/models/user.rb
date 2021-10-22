@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   has_many :gigs
+  has_many :requests
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[facebook]

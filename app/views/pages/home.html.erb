@@ -22,21 +22,103 @@
 
 <section class="m-t-100">
     <div class="container">
-        <h1 class="title is-4 p-l-10">Servicios Profesionales Polulares</h1>
+        <h1 class="title is-4 p-l-10">Servicios Profesionales Populares</h1>
         <div id="carousel-category" class="hero-carousel">
             
-            <div class="carouesel-item">
-                <div class="p-10">
-                    <div class="card-image">
-                        <%= image_tag  "home/category_1.jpg", class: "is-background", width: "100%", height: "100%" %>
-                        <div class="card-content is-overlay is-clipped">
-                            <span class="subtitle f-15 has-text-primary">Personaliza tu sitio</span>
-                            <span class="title is-4 has-text-primary">Wordpress</span>
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <div class="card-image">
+                            <%= image_tag  "home/category_1.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-primary">Personaliza tu sitio</span><br>
+                                <span class="title is-4 has-text-primary">Wordpress</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                    <div class="carousel-item">
+                    <div class="p-10">
+                        <div class="card-image">
+                            <%= image_tag  "home/category_2.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-primary">Asesorias de negocios</span><br>
+                                <span class="title is-4 has-text-primary">Big Data</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="carousel-item">
+                    <div class="p-10">
+                        <div class="card-image">
+                            <%= image_tag  "home/category_3.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-primary">Construye tu marca</span><br>
+                                <span class="title is-4 has-text-primary">Diseño</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="carousel-item">
+                    <div class="p-10">
+                        <div class="card-image">
+                            <%= image_tag  "home/category_4.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-primary">Colorea tus sueños</span><br>
+                                <span class="title is-4 has-text-primary">Ilustración</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <div class="card-image">
+                            <%= image_tag  "home/category_5.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-primary">Alcanza más clientes</span><br>
+                                <span class="title is-4 has-text-primary">Redes sociales</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <div class="card-image">
+                            <%= image_tag  "home/category_6.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-primary">Mejor conocimiento</span><br>
+                                <span class="title is-4 has-text-primary">Traducción</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <div class="card-image">
+                            <%= image_tag  "home/category_7.jpg", class: "is-background", width: "100%", height: "100%" %>
+                            <div class="card-content is-overlay is-clipped">
+                                <span class="subtitle f-15 has-text-primary">Comparte tus mensaje</span><br>
+                                <span class="title is-4 has-text-primary">Cantante</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
         </div>
     </div>
 </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+<script>
+     BulmaCarousel.attach('#carousel-category', {
+        slidesToScroll: 1,
+        slidesToShow: 4,
+        infinite: true,
+        pagination: false
+       });
+</script>

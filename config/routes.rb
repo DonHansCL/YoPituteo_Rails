@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show'
   get '/selling_orders', to: 'orders#selling_orders'
   get '/buying_orders', to: 'orders#buying_orders'
+  get '/all-requests', to: 'requests#list'
 
 
   post '/users/edit', to: 'users#update'  #users_edit_path
@@ -17,9 +18,11 @@ Rails.application.routes.draw do
       delete :delete_photo
       post :upload_photo
     end
+
     resources :orders, only: [:create] #/gigs/15/orders esto es lo producira
   end
 
+  resources :requests
   
   devise_for :users,  controllers: {omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'registrations' },
               path:'', 

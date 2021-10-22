@@ -1,0 +1,46 @@
+<section class="section">
+    <div class="container">
+        <p class="title">
+            Administrar Solicitudes
+            <%= link_to  'Publicar nueva solicitud', new_request_path, class: "button is-primary is-pulled-right" %>
+        </p>
+
+        <table class="table is-fullwidth">
+            <thead class="is-centered">
+                <tr>
+                    <td>Fecha</td>
+                    <td>Solicitud</td>
+                    <td class="has-text-right">Ofertas</td>
+                    <td class="has-text-right">Acción</td>
+                </tr>
+            </thead>  
+            <tbody>
+                <% if @requests.blank? %>
+                        <tr>
+                            <td COLSPAN="4" class="has-text-centered"><h1>NADA QUE MOSTRAR</h1></td>
+                        </tr>
+                <% end %>
+                <% @requests.each do |r| %>
+                    <tr>
+                        <td><%= r.created_at.strftime('%d, %b, %Y') %></td>
+                        <td> <%= link_to r.title, new_request_path(r) %>  </td>
+                        <td class="has-text-right">3</td>
+                        <td class="has-text-right">
+                            <%= link_to edit_request_path(r), class: "m-r-5" do %>
+                                <span class="icon has-text-success">
+                                    <i class="far fa-edit fa-lg"></i>
+                                </span>
+                            <% end %>
+                            <%= link_to r, method: :delete, data: {confirm: "¿Estás seguro?"} do %>
+                                <span class="icon has-text-danger">
+                                    <i class="far fa-trash-alt fa-lg"></i>
+                                </span>
+                            <% end %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>          
+        </table>
+
+    </div>
+</section>
