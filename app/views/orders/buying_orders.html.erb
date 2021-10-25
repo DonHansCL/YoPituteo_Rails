@@ -37,7 +37,30 @@
                         </span>                       
                         </td>
                         <td>
-                            <%= link_to  "Completar", complete_order_path(o), method: :put, class:"button is-small is-primary #{'is-hidden' if o.completada?}" %>
+
+                                <% if !o.completada?%>
+                                  <%= link_to  "Completar", complete_order_path(o), method: :put, class:"button is-small is-primary #{'is-hidden' if o.completada?}" %>
+                                <% else %>
+                                    <a class="button is-small is-outlined is-danger toggle-modal" aria-control="<%= o.id %>">Evaluar</a>
+                                    <div class="modal" id="<%= o.id %>">
+                                        <div class="modal-background"></div>
+                                            <div class="modal-content">
+                                                <div class="box">
+                                                    <%= form_for Review.new do |f| %>
+                                                        <%= f.hidden_field :order_id, value: o.id %>
+                                                        <div class="field">
+                                                            <div id="star_<%= o.id %>"></div>
+                                                        </div>
+                                                        <div class="field">
+                                                            <%= f.text_area :review, class: "textarea" %>
+                                                        </div>
+                                                        <a class="toggle-modal button is-light" aria-control="<%= o.id %>">Cancelar</a>
+                                                        <%= f.submit "Agregar Evaluación", class: "button is-danger" %>
+                                                    <% end %>
+                                                </div>
+                                            </div>                                                                                 
+                                    </div>
+                                <% end %>                           
                         </td>
                     </tr>
                 <%end%>
@@ -45,3 +68,20 @@
         </table>
     </div>
 </section>
+
+
+<script>
+    $('.toggle-modal').on('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+
+        var order_id = e.target.getAttribute('aria-control');
+        $('#star_' + order_id).raty ({
+            path: '/assets/raty-js/lib/images',
+            scoreName: 'review[stars]',
+            score: 1
+        });
+        $('#star_' + order_id).raty('reload');
+        $('#' + order_id).toggleClass('is-active');
+    });
+</script>

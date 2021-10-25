@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ 
+
  $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
 @import '@fortawesome/fontawesome-free/scss/solid';
@@ -37,3 +39,5 @@
 
 /*=== MEDIA QUERY ===*/
 @import url("https://fonts.googleapis.com/css?family=Muli:300,400,600,700,800,900");
+@import 'raty-js/lib/jquery.raty';
+@import 'jquery.raty';

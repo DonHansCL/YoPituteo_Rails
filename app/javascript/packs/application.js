@@ -9,14 +9,20 @@
 //= require turbolinks
 //= require bulma-extensions
 //= require bulma
+//= require jquery.raty
 // All of bulma
 import Bulma from '@vizuaalog/bulmajs';
 
 // Only the plugins you need
 import Navbar from '@vizuaalog/bulmajs/src/plugins/navbar';
 
+
 require("jquery")
 
+require("raty-js")
+
+
+import 'raty-js/lib/jquery.raty'
 import Rails from '@rails/ujs';
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
@@ -27,6 +33,8 @@ import "@fortawesome/fontawesome-free/js/all"
 import "noty/lib/noty"
 import "noty/lib/themes/sunset"
 import 'bulma-extensions';
+import 'raty-js'
+
 
 
 Rails.start()
