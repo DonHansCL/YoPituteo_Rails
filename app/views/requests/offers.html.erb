@@ -1,0 +1,62 @@
+<section class="section">
+    <div class="container">
+        <p class="title">Ver ofertas</p>
+        <table class="table is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th></th>
+                    <th>Nombre Vendedor</th>
+                    <th>Notas</th>
+                    <th>Precio</th>
+                    <th>Fecha entrega</th>
+                    <th>Estado</th>
+                    <th>Acción</th>                    
+                </tr>
+            </thead>
+                <tbody>
+                    <% if @offers.blank? %>
+                        <tr>
+                            <td colspan="8" class="has-text-centered"><h1>NADA QUE MOSTRAR AQUÍ</h1></td>
+                        </tr>
+                    <% end %>
+                    <% @offers.each do |o| %>
+                    <tr>
+                        <td><%= o.created_at.strftime('%d %b %Y') %></td>
+                        <td>
+                            <figure class="image is-48x48">
+                                <%= image_tag avatar_url(o.user), class: "is-rounded" %>
+                            </figure>
+                        </td>
+                        <td><%= o.user.nombre %></td>
+                        <td><%= o.note %></td>
+                        <td>$<%= o.amount %></td>
+                        <td class="has-text-centered"><%= pluralize(o.days, 'día') %></td>
+                        <td>
+                            <span class="tag <%= 'is-warning' if o.pendiente? %><%= 'is-success' if o.aceptada? %><%= 'is-danger' if o.rechazada? %>">    
+                                <%= o.status.capitalize %>
+                            </span>
+                        </td>   
+                        <td>
+                            <%= link_to accept_offer_path(o), method: :put,
+                                        data: { confirm: "¿Estás seguro?"},
+                                        class: "button is-samll is-primary is-outlined #{'is-hidden' if !o.pendiente?}" do %>
+                                    <span class="icon"><i class="far fa-check-circle fa-lg"></i></span>
+                                    <span>Aceptar</span>
+                            <% end %>
+
+                             <%= link_to reject_offer_path(o), method: :put,
+                                        data: { confirm: "¿Estás seguro?"},
+                                        class: "button is-samll is-danger is-outlined #{'is-hidden' if !o.pendiente?}" do %>
+                                    <span class="icon"><i class="fas fa-times-circle fa-lg"></i></span>
+                                    <span>Rechazar</span>
+                            <% end %>
+                        <!--    <%= link_to 'Aceptar', nil, class: "button is-small is-success" %>
+                            <%= link_to 'Rechazar', nil, class: "button is-small is-danger" %>  -->
+                        </td>
+                    </tr>
+                     <% end %>
+                </tbody>
+        </table>
+    </div>
+</section>

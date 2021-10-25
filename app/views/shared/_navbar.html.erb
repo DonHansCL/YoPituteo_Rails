@@ -95,7 +95,7 @@
 
 
 				<div class="navbar-item has-dropdown is-hoverable">
-					<a class="navbar-link">Ofrezco</a> <!--selling -->
+					<a class="navbar-link">Vendiendo</a> <!--selling -->
 
 					<div class="navbar-dropdown">
 						<%= link_to 'Crear nuevo aviso', new_gig_path, class: "navbar-item"%>
@@ -105,7 +105,7 @@
 
 
 				<div class="navbar-item has-dropdown is-hoverable">
-					<a class="navbar-link">Necesito</a> <!--BUYING -->
+					<a class="navbar-link">Comprando</a> <!--BUYING -->
 
 					<div class="navbar-dropdown">
 					<%= link_to 'Publicar Solicitud', new_request_path, class: "navbar-item"%>
@@ -117,13 +117,12 @@
 
 
 				<div class="navbar-item has-dropdown is-hoverable">
-					<a class="navbar-link">Solicitudes</a> <!--request -->
+					<a class="navbar-link">Solicitudes de comprador</a> <!--request -->
 
 					<div class="navbar-dropdown">
-					<%= link_to 'Solicitudes Activas', all_requests_path, class: "navbar-item"%>
+						<%= link_to 'Solicitudes Activas', all_requests_path, class: "navbar-item"%>
 					
-					<a class="navbar-item">Ofertas enviadas</a>
-										
+						<%= link_to 'Ofertas enviadas', my_offers_path, class: "navbar-item"%>			
 					</div>
 				</div>
 

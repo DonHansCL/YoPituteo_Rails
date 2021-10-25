@@ -4,22 +4,6 @@
         
 
 
-
-
-<<script>
-$(document).on('turbolinks:load',() => {    //=aqui probe $(document).on('turbolinks:load',() => {    / .on('turbolinks:load', function()   /       document.addEventListener("turbolinks:load", function() {           /$(document).on('ready turbolinks:load', function() {     /pero no funcionó
-    $('.toggle').on('click', (e) => {
-        e.stopPropagation();
-        e.preventDefault();
-        $('#' + e.target.getAttribute('aria-controls')).toggleClass('is-hidden');
-    })
-})
-</script>>
-
-
-
-
-
             <!-- LEFT SIDE -->
             <div class="column is-one-third">
                 <div class="columns is-multiline">

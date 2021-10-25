@@ -1,0 +1,87 @@
+class OffersController < ApplicationController
+
+    before_action :authenticate_user!
+    before_action :set_offer, only: [:accept, :reject]
+    before_action :is_authorised, only: [:accept, :reject]
+    
+    def create
+        req = Request.find(offer_params[:request_id])
+     
+        if req && req.user_id == current_user.id
+            redirect_to request.referrer, alert: "No puedes ofertar a tú propia solicitud"
+        end
+
+        if Offer.exists?(user_id: current_user.id, request_id: offer_params[:request_id])
+            redirect_to request.referrer, alert: "Puedes realizar solo 1 oferta por el momento"
+        end
+      
+        @offer = current_user.offers.build(offer_params)
+        if @offer.save
+            #redirect_to request.referrer, notice: "Guardado"
+            redirect_to my_offers_path, notice:"Guardado..."
+        else
+            redirect_to request.referrer, flash: {error: @offer.errors.full_messages.join(', ')}
+        end
+    end
+
+    def accept
+        if @offer.pendiente?    
+            @offer.aceptada!   #esto lo puedo usar por que lo agregue en enum del archivo user.rb // y es lo msimo que @offer.status = 1
+            
+            
+            if charge(@offer.request, @offer)        
+                    flash[:notice] = "Aceptada..."
+                    return redirect_to buying_orders_path
+            else
+                    flash[:alert] = "Tú orden no pudo ser creada"
+
+            end     
+        end
+        redirect_to request.referrer
+    end
+
+    def reject
+        if @offer.pendiente?
+            @offer.rechazada!      #esto lo puedo usar por que lo agregue en enum del archivo user.rb // y es lo msimo que @offer.status = 1
+            flash[:notice] = "Rechazada..."
+        end
+        redirect_to request.referrer
+    end
+    
+
+
+    private
+
+
+
+    def charge(req, offer)
+        order = req.orders.new
+        order.due_date = Date.today() + offer.days
+        order.title = req.title
+        order.seller_name = offer.user.nombre
+        order.seller_id = offer.user.id
+        order.buyer_name = current_user.nombre
+        order.buyer_id = current_user.id
+        order.amount = offer.amount
+        order.save
+           
+    end
+    
+
+    def set_offer
+        @offer = Offer.find(params[:id])
+    end
+    
+  
+    def is_authorised
+        redirect_to root_path, alert: "No tienes los permisos para acceder" unless current_user.id == @offer.request.user_id
+    end
+  
+
+    def offer_params
+        params.require(:offer).permit(:amount, :days, :note, :request_id, :status)
+    end
+         
+    
+
+end
