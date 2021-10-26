@@ -12,8 +12,7 @@ gem 'puma', '~> 5.0'
 
 gem 'devise'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'rails-i18n'
-   
+  
 
 gem 'jquery-rails'
 gem "bulma-rails", "~> 0.9.1"

@@ -19,10 +19,13 @@
   <link href="css/styles.scss" rel="stylesheet">-->
   <!-- BULMA CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-
   
 
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+   <% if content_for?(:head) %>
+    <%= yield(:head) %>
+  <% end %>
+
   <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <title>YoPituteo</title>

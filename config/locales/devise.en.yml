@@ -1,6 +1,6 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
-es:
+en:
   devise:
     confirmations:
       confirmed: "Tu cuenta ya ha sido confirmada. Has sido indentificado."
