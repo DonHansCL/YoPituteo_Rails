@@ -7,6 +7,8 @@ before_action :authenticate_user!
 
   def show 
     @user = User.find(params[:id])
+    @reviews = Review.where(seller_id: params[:id]).order("created_at desc")
+
   end
 
   def update

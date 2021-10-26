@@ -30,17 +30,17 @@
 				<a class="navbar-item">Ver Pitutos</a>
 
 				<% if (!user_signed_in?) %>
-							<div class="navbar-item has-dropdown is-hoverable">
+							<div class="navbar-item">
 							<div class="columns">
 								<div class="column">
-										<button class= "button is-primary">
-									<%= link_to "Iniciar Sesión", new_user_session_path, method: :post %>
-										</button>
+																				
+									<%= link_to "Iniciar Sesión", new_user_session_path, method: :post, class: "button is-primary" %>
+										
 								</div>
 								<div class="column">
-										<button class= "button is-primary">
-									<%= link_to "Registrate", new_user_registration_path, method: :post %>
-										</button>
+									
+									<%= link_to "Registrate", new_user_registration_path, method: :post, class: "button is-primary" %>
+										
 								</div>
 							</div>
 							</div>		
@@ -85,7 +85,7 @@
 	 
 	 
 
-<% if (user_signed_in?) && !current_page?(root_path) && !current_page?("/gigs/#{params[:id]}") && !current_page?("/users/#{params[:id]}")%>
+<% if (user_signed_in?) && !current_page?(root_path) && !current_page?(search_path) && !current_page?("/gigs/#{params[:id]}") && !current_page?("/users/#{params[:id]}")%>
 
 <nav class="navbar has-shadow" style="z-index: 5">
 	<div class="container">
