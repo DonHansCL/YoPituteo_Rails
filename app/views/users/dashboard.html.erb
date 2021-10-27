@@ -1,3 +1,9 @@
+<% content_for :head do %>
+    <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
+
+
+
 <section class="section">
     <div class="container">
         <div class="columns">
@@ -216,7 +222,7 @@
         </div>
 
         <div class="card-content p-t-5 p-b-5">
-            <p class="subtitle is-6 m-b-5"><%= link_to gig.title, gig_path(gig)%></p>
+            <p class="subtitle is-6 m-b-5"><%= link_to gig.title.truncate(28), gig_path(gig)%></p>
             <span class="star-review"><i class="fa fa-star"></i>
                 <%= gig.average_rating %>
                  <span class="has-text-primary">(<%= gig.reviews.count %>)</span>
@@ -244,3 +250,13 @@
         </div>
     </div>
 </section>
+
+<script>
+    $(document).ready(() => {    //=aqui probe $(document).on('turbolinks:load',() => {    / .on('turbolinks:load', function()   /       document.addEventListener("turbolinks:load", function() {           /$(document).on('ready turbolinks:load', function() {     /pero no funcionó
+    $('.toggle').on('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        $('#' + e.target.getAttribute('aria-controls')).toggleClass('is-hidden');
+    })
+})
+</script>

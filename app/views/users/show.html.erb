@@ -132,7 +132,7 @@
                                     </div>
 
                                     <div class="card-content p-t-5 p-b-5">
-                                        <p class="subtitle is-6 m-b-5"><%= link_to gig.title, gig_path(gig)%></p>
+                                        <p class="subtitle is-6 m-b-5"><%= link_to gig.title.truncate(25), gig_path(gig)%></p>
                                         <span class="star-review"><i class="fa fa-star"></i>
                                             <%= gig.average_rating %>
                                             <span class="has-text-primary">(<%= gig.reviews.count %>)</span>

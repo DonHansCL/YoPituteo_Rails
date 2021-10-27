@@ -112,3 +112,26 @@ $sides: (top, bottom, left, right);
   background-color: #00d1b2 !important;
   border-color: #00d1b2 !important;
 }
+
+.avatar {
+  position: relative;
+  display: inline-block;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 1px solid white;    
+  }
+
+  &.online::before {
+    background-color: #1dbf73;
+  }
+  &.offline::before {
+    background-color: red;
+  }
+}

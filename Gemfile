@@ -12,6 +12,8 @@ gem 'puma', '~> 5.0'
 
 gem 'devise'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'trestle', '~> 0.8.12'
+gem 'trestle-auth', '~> 0.2.5'
   
 
 gem 'jquery-rails'
@@ -25,7 +27,6 @@ gem 'kaminari'
 gem 'faker', '=1.9.3'
 gem 'bulma-extensions-rails', '~> 6.2', '>= 6.2.7'
 
-gem 'jquery-rails'
 gem 'bulmajs-rails'
 
 
