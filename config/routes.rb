@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/request_offers/:id', to: 'requests#offers', as: 'request_offers'
   get '/my_offers', to: 'requests#my_offers'
   get '/search', to: 'pages#search'
+  get '/admin/dashboard', to: 'dashboard#index', as: 'admin'
 
 
   post '/users/edit', to: 'users#update'  #users_edit_path

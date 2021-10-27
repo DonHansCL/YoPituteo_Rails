@@ -75,6 +75,29 @@
                                 </article>                                
                                 <hr class="h-10">
 
+                                <!-- Telefono -->
+                                <article>
+                                    <div class="media">
+                                        <div class="media-content">Telefono:</div>
+                                            <div class="media-right">
+                                                 <strong><%= current_user.telefono %></strong> <i class="toggle far fa-edit" aria-controls="user-phone"></i>
+                                        </div>
+                                    </div>
+
+                                    <div class="content">
+                                        <%= form_for :user, url: users_edit_url(@user), action: :update, method: :post, html: {id: 'user-phone', class: 'is-hidden'} do |f| %>
+                                        <div class="field">
+                                            <%= f.text_field :telefono, autofocus: true, autocomplete: 'form', class: 'input' %>
+                                        </div>
+                                        <a class="toggle button is-light" aria-controls="user-from">Cancelar</a>
+                                        <%= f.submit "Guardar", class: "button is-danger"%>
+                                        <% end %>
+                                    </div>
+
+
+
+                                </article>   
+                                <hr class="h-10">
                                 <!-- Online Status -->
                                 <article>
                                      <div class="media">

@@ -23,6 +23,6 @@ before_action :authenticate_user!
 
   private
   def current_user_params
-    params.require(:user).permit(:ciudad, :about,:status,:language, :avatar)
+    params.require(:user).permit(:ciudad, :about,:status,:language,:telefono, :avatar)
   end  
 end

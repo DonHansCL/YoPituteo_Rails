@@ -12,8 +12,10 @@ gem 'puma', '~> 5.0'
 
 gem 'devise'
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'trestle', '~> 0.8.12'
+gem 'trestle', '~> 0.8.12'   #es para el ADMIN DASHBOARD
 gem 'trestle-auth', '~> 0.2.5'
+gem 'trestle-search', '~> 0.3.0'
+gem 'trestle-tinymce', '~> 0.1.3'
   
 
 gem 'jquery-rails'
@@ -22,7 +24,7 @@ gem 'noty-rails'
 gem 'omniauth'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth-facebook', '=5.0.0'
-gem 'kaminari'
+gem 'kaminari' 
 
 gem 'faker', '=1.9.3'
 gem 'bulma-extensions-rails', '~> 6.2', '>= 6.2.7'
