@@ -22,7 +22,9 @@
                                 <!-- Upload Button -->
                                 <div class="content has-text-centered">
                                     <p class="title is-5"><%= @user.nombre %></p>
-
+                                    <% if current_user.id != @user.id %>
+                                        <a class="button is-black is-outlined is-fullwidth toggle-contact">Contactar</a>
+                                    <% end %>
                                 </div>
                                 <hr class="n-10">
                                 
@@ -181,7 +183,7 @@
                                     <strong><%= r.buyer.nombre %></strong><br/>
                                     <%= r.review %>
                                 </p>
-                                <small><%= time_ago_in_words(r.created_at) %></small>
+                                <small><%= time_ago_in_words_es(r.created_at) %></small>
                             </div>
                         </div>
 
@@ -198,3 +200,60 @@
         </div>
     </div>
 </section>
+
+<div class="modal" id="contact-form">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Enviar mensaje</p>
+            <button class="delete toggle-contact" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <div class="card" st>
+                        <div class="card-content is-horizontal-center is-flex">
+                            <figure class="image is-128x128">
+                                   <%= image_tag avatar_url(@user), class:"is-rounded" %>
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <hr>
+                            <strong>Por favor incluya:</strong>
+                            <ul class="is-size-7" style="list-style:initial">
+                                <li>Descripción del proyecto</li>
+                                <li>Instructiones específicas</li>
+                                <li>Archivos relevantes</li>
+                                <li>Su presupuesto</li>
+                            </ul>
+                        </div>
+                     </div>
+                </div>   
+                <div class="column">
+                    <%= form_with model: Message.new do |f| %>
+                        <%= f.hidden_field :receiver_id, value: @user.id %>
+                            <div class="card-content">
+                                <div class="field">
+                                    <div class="control">
+                                        <%= f.text_area :content, class: "textarea" %>
+                                    </div>
+                                </div>
+                                <%= f.submit "Enviar", class:"button is-danger is-pulled-right" %>                                                          
+                            </div>
+                    <% end %>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+<script>
+    var toggle_modals = $('.toggle-contact');
+    if (toggle_modals) {
+        toggle_modals.on('click', function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            var form = document.getElementById('contact-form');
+            form.classList.toggle('is-active');
+        });
+    }
+</script>

@@ -71,9 +71,10 @@
 								<div class="navbar-dropdown">
                                     <%= link_to "Perfil", edit_user_registration_path, class:"navbar-item" %>
 									<%= link_to 'Mi muro', dashboard_path, class: "navbar-item"%>
+									<%= link_to 'Mensajes', conversations_path, class: "navbar-item"%>
 								<!-- 	<a class="navbar-item" href="dashboard-my-ads.html">Mi avisos</a> 
 									<a class="navbar-item" href="dashboard-favourite-ads.html">Avisos Favoritos</a>
-									<a class="navbar-item">Avisos Pendientes</a>
+									<a class="navbar-item">Avisos Pendientes</a>	
                                     <a class="navbar-item">Mensajes</a> -->
 									
                                     <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class:"navbar-item"%>
@@ -141,6 +142,8 @@
 										
 					</div>
 				</div>
+
+				<%= link_to 'Mensajes', conversations_path, class: "navbar-item"%>
 
 		<!--	<%= link_to 'Ganancias', dashboard_path, class: "navbar-item"%>
 			<%= link_to 'Mensajes', dashboard_path, class: "navbar-item"%>

@@ -25,6 +25,8 @@ gem 'omniauth'
 gem "omniauth-rails_csrf_protection"
 gem 'omniauth-facebook', '=5.0.0'
 gem 'kaminari' 
+gem 'time_ago_in_words_es'
+
 
 gem 'faker', '=1.9.3'
 gem 'bulma-extensions-rails', '~> 6.2', '>= 6.2.7'
