@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post '/offers', to: 'offers#create'
   post '/reviews', to: 'reviews#create'
   post 'messages', to: 'messages#create'
+  post '/comments', to: 'comments#create'
 
 
   put '/orders/:id/complete', to: 'orders#complete', as: 'complete_order' #complete_order_path

@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section" data-channel-subscribe="order" data-order-id="<%= @order.id %>">
     <div class="container">
         <div class="columns">
 
@@ -10,22 +10,28 @@
                 <hr>
                 <div id="comment-list">
                     <!-- List of comments here -->
+                    <% @comments.each do |c| %>
+                        <%= render 'orders/comment', comment: c %>
+                    <% end %>
                 </div>
                 <hr>
 
                 <article class="media">
                     <figure class="media-left">
                         <p class="image is-64x64">                            
-                            <img src="https://i.pravatar.cc/200" class = "is-rounded">
+                            <%= image_tag avatar_url(current_user), class: "is-rounded" %>
                         </p>
                     </figure>
                     <div class="media-content">
-                        <div class="field">
-                            <textarea class="textarea"></textarea>
-                        </div>
-                        <div class="field is-pulled-right">
-                            <button class="button is-primary">Post comment</button>                            
-                        </div>
+                        <%= form_with model: Comment.new, id: "new-comment" do |f| %>
+                        <%= f.hidden_field :order_id, value: @order.id %>
+                            <div class="field">
+                                <%= f.text_area :content, class: "textarea", placeholder: "Ingresa tu comentario" %>
+                            </div>
+                            <div class="field is-pulled-right">
+                                <%= f.submit "Publicar comentario", class: "button is-primary" %>                            
+                            </div>
+                        <% end %>
                     </div>
                 </article>
             </div>

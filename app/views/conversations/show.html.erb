@@ -57,7 +57,7 @@
             <hr>
 
              <!-- Messages -->
-           <div class="columns is-multiline" id="message_list">
+           <div class="columns is-multiline" id="message-list">
                 <% @messages.each do |m| %>
                     <%= render 'conversations/message', m: m, user: current_user %>
                 <% end %>
@@ -65,7 +65,7 @@
 
              <!-- Send message -->
             <div class="column m-t-25">
-                <%= form_with model: Message.new, id: "new_message" do |f| %>
+                <%= form_with model: Message.new, id: "new-message" do |f| %>
                     <%= f.hidden_field :receiver_id, value: @user.id %>
                     <div class="field has-addons">
                         <div class="control" style="width: 100%">

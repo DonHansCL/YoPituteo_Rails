@@ -3,11 +3,11 @@ import consumer from "./consumer"
 $(document).on('turbolinks:load', () => {
   $('[data-channel-subscribe="conversation"]').each(function(index, element) {
     var $element = $(element),
-      $chatList = $('#message_list'),
-      $form = $('#new_message'),
+      $chatList = $('#message-list'),
+      $form = $('#new-message'),
 
       conversation_id = $element.data('conversation-id'),
-      user_id = $element.data('user_id')
+      user_id = $element.data('user-id')
 
       consumer.subscriptions.create(
         {

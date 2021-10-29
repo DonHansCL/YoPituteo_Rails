@@ -7,10 +7,11 @@
     <div class="media-content">
         <div class="content">
             <p>
-                <strong><%= comment.user.id == current_user.id ? "Yo" : comment.user.nombre %></strong>
+                <strong><%= comment.user.nombre %></strong>
                 <small class="is-pulled-right"><%= time_ago_in_words_es(comment.created_at) %></small>
                 <br>
-
+                <%= comment.content %>
+                <br>
             </p>
         </div>
     </div>
