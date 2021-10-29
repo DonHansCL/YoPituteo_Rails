@@ -34,6 +34,9 @@ import "noty/lib/noty"
 import "noty/lib/themes/sunset"
 import 'bulma-extensions';
 import 'raty-js'
+import '@fullcalendar/core/main'
+import '@fullcalendar/daygrid/main'
+import '@fullcalendar/list/main'
 
 
 
@@ -46,6 +49,11 @@ ActiveStorage.start()
 window.Noty = require('noty')
 window.Dropzone = require('dropzone')
 window.BulmaCarousel = require("bulma-extensions/bulma-carousel/dist/js/bulma-carousel.min.js")
+
+window.Calendar = require("@fullcalendar/core").Calendar;
+window.dayGridPlugin = require("@fullcalendar/daygrid").default;
+window.listPlugin = require("@fullcalendar/list").default;
+
 
 
 

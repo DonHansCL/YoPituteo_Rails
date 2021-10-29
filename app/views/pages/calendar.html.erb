@@ -1,0 +1,27 @@
+<section class="section">
+    <div class="container m-t-20">
+         <div id="calendar">
+         
+         </div>
+    </div>
+</section>
+
+<script>
+
+  $(function() {
+      
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new Calendar(calendarEl, {
+        locale: 'es',
+      header: {
+        left: 'prev,next',
+        right: 'dayGridMonth, listMonth'
+      },
+
+      plugins: [dayGridPlugin, listPlugin],
+      defaultView: 'dayGridMonth'
+    });
+
+    calendar.render();
+  })
+</script>

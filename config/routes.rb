@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/request_offers/:id', to: 'requests#offers', as: 'request_offers'
   get '/my_offers', to: 'requests#my_offers'
   get '/search', to: 'pages#search'
+  get '/calendar', to: 'pages#calendar'
   get '/admin/dashboard', to: 'dashboard#index', as: 'admin'
   get '/conversations', to: 'conversations#list', as: 'conversations'
   get '/conversations/:id', to: 'conversations#show', as: 'conversations_detail'

@@ -8,19 +8,21 @@ class CommentsController < ApplicationController
         order = Order.find(comment_params[:order_id])
 
         if comment_params[:content].blank?
-            #return redirect_to request.referrer, alert: "Mensaje inválido"
-            return render json: {success: false}
+            return redirect_to request.referrer, alert: "Mensaje inválido"
+            #return render json: {success: false}
         end
 
 
         if order.buyer_id != current_user.id && order.seller_id != current_user.id
-            return render json: {success: false}
+            return redirect_to request.referrer, alert: "Mensaje inválido"
+          #  return render json: {success: false}
         end
 
         @comment = Comment.new(
             user_id: current_user.id,
             order_id: order.id,
-            content: comment_params[:content]
+            content: comment_params[:content], 
+            attachment_file: comment_params[:attachment_file] 
         )
 
         if @comment.save
@@ -28,7 +30,7 @@ class CommentsController < ApplicationController
            CommentChannel.broadcast_to order, message: render_comment(@comment)
          #  return render json: {success: true} esto no funciona
         else
-            # redirect_to request.referrer, alert: "Comentario no pudo ser enviado"
+             redirect_to request.referrer, alert: "Comentario no pudo ser enviado"
            # return render json: {success: false}   ESTO NO FUNCIONA
         end
     end
@@ -41,7 +43,7 @@ class CommentsController < ApplicationController
       end
 
     def comment_params
-        params.require(:comment).permit(:content, :order_id)
+        params.require(:comment).permit(:content, :order_id, :attachment_file)
     end
 
     def is_valid_order
