@@ -44,11 +44,7 @@
             <label class="label">Titulo del aviso</label>
             <%= f.text_area :title, autocomplete: "title", class: "textarea" %>
         </div>
-        <div class="field">
-            <label class="label">Provincia</label>          
-            <%= f.grouped_collection_select :province_id, Province.order(:region_id), :region_id, :id, :id, :nombre, include_blank: true %>
-           
-        </div>
+      
         <div class="field">
             <label class="label">Categoria</label>
             <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] })) %>
