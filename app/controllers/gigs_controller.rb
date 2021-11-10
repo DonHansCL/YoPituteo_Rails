@@ -8,7 +8,8 @@ class GigsController < ApplicationController
   
   def new
     @gig = current_user.gigs.build
-    @categories = Category.all
+    @categories = Category.all   
+    @provinces = Province.all
   end
 
   def create
@@ -24,7 +25,8 @@ class GigsController < ApplicationController
 
 
   def edit
-    @categories = Category.all
+    @categories = Category.all    
+    @provinces = Province.all
   end
 
 
@@ -88,6 +90,7 @@ class GigsController < ApplicationController
 
   def show
     @categories = Category.all  
+    @provinces = Province.all
   end
 
 
@@ -101,6 +104,79 @@ class GigsController < ApplicationController
     @image.purge
     redirect_to edit_gig_path(@gig, step: 4)
   end
+
+
+
+
+
+
+
+  def search
+    @gig = current_user.gigs.build(gig_params)
+    @categories = Category.all
+    @category = Category.find(params[:category]) if params[:category].present?
+    @provinces = Province.all   
+   # @province = Province.find(params[:province]) if params[:province].present?
+
+   #  @gigs = Gig.where("active = ? AND gigs.title ILIKE ? AND category_id = ?", true, "%#{params[:q]}%", params[:category])
+
+   @q= params[:q]
+   @min = params[:min]
+   @max = params[:max]
+   @delivery = params[:delivery].present? ? params[:delivery] : "0"
+   @sort = params[:sort].present? ? params[:sort] : "price asc"
+
+   query_condition = []
+   query_condition[0] = "gigs.active = true"
+   query_condition[0] += " AND ((gigs.has_single_pricing = true AND pricings.pricing_type = 0) OR (gigs.has_single_pricing = false))"
+
+      if !@q.blank?
+        query_condition[0] += " AND gigs.title ILIKE ?"
+        query_condition.push "%#{@q}%"
+      end
+
+      if !params[:category].blank?
+        query_condition[0] += " AND category_id = ?"
+        query_condition.push params[:category]
+      end
+
+      if !params[:province].blank?
+        query_condition[0] += " AND province_id = ?"
+        query_condition.push params[:province]
+      end
+
+      if !params[:min].blank?
+        query_condition[0] += " AND pricings.price >= ?"
+        query_condition.push @min
+      end
+
+      if !params[:max].blank?
+        query_condition[0] += " AND pricings.price <= ?"
+        query_condition.push @max
+      end
+
+      if !params[:delivery].blank? && params[:delivery] != "0"
+        query_condition[0] += " AND pricings.delivery_time <= ?"
+        query_condition.push @delivery
+      end
+
+      @gigs = Gig.select("gigs.id, gigs.title, gigs.user_id, MIN(pricings.price) AS price").joins(:pricings).where(query_condition)
+                  .group("gigs.id")
+                  .order(@sort)
+                  .page(params[:page]).per(12)
+  end
+  
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -123,8 +199,12 @@ class GigsController < ApplicationController
   end
 
   def gig_params
-    params.require(:gig).permit(:title, :video, :description, :active, :category_id, :has_single_pricing, 
-                        pricings_attributes: [:id, :title, :description, :delivery_time, :price, :pricing_type])
+    params.require(:gig).permit(:title, :video, :description, :active, :category_id, :province_id, :has_single_pricing, 
+                        pricings_attributes: [:id, :title, :description, :delivery_time, :price, :pricing_type])    
+            
   end  
+
+ 
+  
 
 end
