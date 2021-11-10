@@ -30,6 +30,6 @@ test:
 
 production:
   <<: *default
-  database: yopituteo_production
-  username: postgres
-  password: 1047
+  database: <%= ENV['DATABASE_URL'] %>
+  #username: postgres
+  #password: 1047
