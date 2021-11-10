@@ -4,6 +4,11 @@
             <%= f.text_area :title, autocomplete: "title", class: "textarea" %>
     </div>
         <div class="field">
+            <label class="label">Provincia</label>
+            
+            <%= f.select(:province_id, options_for_select(@provinces.map{ |c| [c.nombre, c.id] },class: "is-primary", selected: @gig.province_id) ) %>
+        </div>
+        <div class="field">
             <label class="label">Categoria</label>
             <%= f.select(:category_id, options_for_select(@categories.map{ |c| [c.name, c.id] },class: "is-primary", selected: @gig.category_id) ) %>
         </div>
