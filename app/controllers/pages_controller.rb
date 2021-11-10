@@ -1,10 +1,21 @@
 class PagesController < ApplicationController
-  def home
+  
+   
+  def new
+   
+    @provinces = Province.all
+
   end
+  
 
   def search
+    
+    @provinces = Province.all
+
     @categories = Category.all
     @category = Category.find(params[:category]) if params[:category].present?
+     
+   # @province = Province.find(params[:province]) if params[:province].present?
 
    #  @gigs = Gig.where("active = ? AND gigs.title ILIKE ? AND category_id = ?", true, "%#{params[:q]}%", params[:category])
 
@@ -26,6 +37,11 @@ class PagesController < ApplicationController
       if !params[:category].blank?
         query_condition[0] += " AND category_id = ?"
         query_condition.push params[:category]
+      end
+
+      if !params[:province].blank?
+        query_condition[0] += " AND province_id = ?"
+        query_condition.push params[:province]
       end
 
       if !params[:min].blank?
@@ -50,6 +66,13 @@ class PagesController < ApplicationController
   end
   
 
+
+
+
+  private
+
+ 
+
   def calendar
     params[:start_date] ||= Date.current.to_s
 
@@ -65,5 +88,9 @@ class PagesController < ApplicationController
                           
 # NO ESTA FUNCIONANDO, NO ME PASA DE UN MES AL SIGUIENTE, Y AL VOLVER ATRAS VUELVE DE MESES                          
   end
+
+
   
+
+
 end

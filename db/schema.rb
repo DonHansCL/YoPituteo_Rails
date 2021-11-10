@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_29_122636) do
+ActiveRecord::Schema.define(version: 2021_11_05_202957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -100,7 +100,9 @@ ActiveRecord::Schema.define(version: 2021_10_29_122636) do
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "provincia_id"
     t.index ["category_id"], name: "index_gigs_on_category_id"
+    t.index ["provincia_id"], name: "index_gigs_on_provincia_id"
     t.index ["user_id"], name: "index_gigs_on_user_id"
   end
 
@@ -158,6 +160,29 @@ ActiveRecord::Schema.define(version: 2021_10_29_122636) do
     t.index ["gig_id"], name: "index_pricings_on_gig_id"
   end
 
+  create_table "provinces", force: :cascade do |t|
+    t.string "nombre"
+    t.bigint "region_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["region_id"], name: "index_provinces_on_region_id"
+  end
+
+  create_table "provincia", force: :cascade do |t|
+    t.string "name"
+    t.bigint "region_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["region_id"], name: "index_provincia_on_region_id"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "name"
+    t.string "region_ordinal"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "requests", force: :cascade do |t|
     t.text "description"
     t.string "title"
@@ -209,7 +234,11 @@ ActiveRecord::Schema.define(version: 2021_10_29_122636) do
     t.string "about"
     t.string "language"
     t.boolean "active", default: true
+    t.bigint "region_id"
+    t.bigint "provincia_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["provincia_id"], name: "index_users_on_provincia_id"
+    t.index ["region_id"], name: "index_users_on_region_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -220,6 +249,7 @@ ActiveRecord::Schema.define(version: 2021_10_29_122636) do
   add_foreign_key "conversations", "users", column: "receiver_id"
   add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "gigs", "categories"
+  add_foreign_key "gigs", "provincia", column: "provincia_id"
   add_foreign_key "gigs", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
@@ -230,10 +260,14 @@ ActiveRecord::Schema.define(version: 2021_10_29_122636) do
   add_foreign_key "orders", "users", column: "buyer_id"
   add_foreign_key "orders", "users", column: "seller_id"
   add_foreign_key "pricings", "gigs"
+  add_foreign_key "provinces", "regions"
+  add_foreign_key "provincia", "regions"
   add_foreign_key "requests", "categories"
   add_foreign_key "requests", "users"
   add_foreign_key "reviews", "gigs"
   add_foreign_key "reviews", "orders"
   add_foreign_key "reviews", "users", column: "buyer_id"
   add_foreign_key "reviews", "users", column: "seller_id"
+  add_foreign_key "users", "provincia", column: "provincia_id"
+  add_foreign_key "users", "regions"
 end

@@ -66,6 +66,7 @@ class RequestsController < ApplicationController
   def set_categories
     @categories = Category.all    
   end
+
   
 
   def set_request

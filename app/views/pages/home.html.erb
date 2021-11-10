@@ -25,9 +25,9 @@
     </div>
 </section>
 
-<section class="m-t-100">
+<section class="m-t-60">
     <div class="container">
-        <h1 class="title is-4 p-l-10">Servicios Profesionales Populares</h1>
+        <h1 class="title is-4 p-l-10">Buscar por categorías</h1>
         <div id="carousel-category" class="hero-carousel">
             
                 <div class="carousel-item">
@@ -36,8 +36,8 @@
                             <div class="card-image">
                                 <%= image_tag  "home/category_1.jpg", class: "is-background", width: "100%", height: "100%" %>
                                 <div class="card-content is-overlay is-clipped">
-                                    <span class="subtitle f-15 has-text-primary ">Personaliza tu sitio</span><br>
-                                    <span class="title is-4 has-text-primary">Wordpress</span>
+                                    
+                                    <span class="title is-4 has-text-primary">Legales</span>
                                 </div>
                             </div>
                         <% end %>
@@ -50,8 +50,8 @@
                             <div class="card-image">
                                 <%= image_tag  "home/category_2.jpg", class: "is-background", width: "100%", height: "100%" %>
                                 <div class="card-content is-overlay is-clipped">
-                                    <span class="subtitle f-15 has-text-primary">Asesorias de negocios</span><br>
-                                    <span class="title is-4 has-text-primary">Big Data</span>
+                                   
+                                    <span class="title is-4 has-text-primary">Servicios generales</span>
                                 </div>
                             </div>
                         <% end %>
@@ -64,8 +64,8 @@
                             <div class="card-image">
                                 <%= image_tag  "home/category_3.jpg", class: "is-background", width: "100%", height: "100%" %>
                                 <div class="card-content is-overlay is-clipped">
-                                    <span class="subtitle f-15 has-text-primary">Construye tu marca</span><br>
-                                    <span class="title is-4 has-text-primary">Diseño</span>
+                                    
+                                    <span class="title is-4 has-text-primary">Construcción</span>
                                 </div>
                             </div>
                         <% end %>
@@ -78,8 +78,8 @@
                             <div class="card-image">
                                 <%= image_tag  "home/category_4.jpg", class: "is-background", width: "100%", height: "100%" %>
                                 <div class="card-content is-overlay is-clipped">
-                                    <span class="subtitle f-15 has-text-primary">Colorea tus sueños</span><br>
-                                    <span class="title is-4 has-text-primary">Ilustración</span>
+                                   
+                                    <span class="title is-4 has-text-primary">Empresas</span>
                                 </div>
                             </div>
                         <% end %>
@@ -92,8 +92,8 @@
                             <div class="card-image">
                                 <%= image_tag  "home/category_5.jpg", class: "is-background", width: "100%", height: "100%" %>
                                 <div class="card-content is-overlay is-clipped">
-                                    <span class="subtitle f-15 has-text-primary">Alcanza más clientes</span><br>
-                                    <span class="title is-4 has-text-primary">Redes sociales</span>
+                                    
+                                    <span class="title is-4 has-text-primary">Empleos y capacitación</span>
                                 </div>
                             </div>
                         <% end %>
@@ -106,8 +106,8 @@
                             <div class="card-image">
                                 <%= image_tag  "home/category_6.jpg", class: "is-background", width: "100%", height: "100%" %>
                                 <div class="card-content is-overlay is-clipped">
-                                    <span class="subtitle f-15 has-text-primary">Mejor conocimiento</span><br>
-                                    <span class="title is-4 has-text-primary">Traducción</span>
+                                    
+                                    <span class="title is-4 has-text-primary">Deporte</span>
                                 </div>
                             </div>
                         <% end%>
@@ -120,14 +120,141 @@
                             <div class="card-image">
                                 <%= image_tag  "home/category_7.jpg", class: "is-background", width: "100%", height: "100%" %>
                                 <div class="card-content is-overlay is-clipped">
-                                    <span class="subtitle f-15 has-text-primary">Comparte tus mensaje</span><br>
-                                    <span class="title is-4 has-text-primary">Cantante</span>
+                                  
+                                    <span class="title is-4 has-text-primary">Hogar</span>
                                 </div>
                             </div>
                         <% end%>
                     </div>
                 </div>
 
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <%= link_to search_path(category: 8) do %>
+                            <div class="card-image">
+                                <%= image_tag  "home/category_8.jpg", class: "is-background", width: "100%", height: "100%" %>
+                                <div class="card-content is-overlay is-clipped">
+                                 
+                                    <span class="title is-4 has-text-primary">Mascotas</span>
+                                </div>
+                            </div>
+                        <% end%>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <%= link_to search_path(category: 9) do %>
+                            <div class="card-image">
+                                <%= image_tag  "home/category_9.jpg", class: "is-background", width: "100%", height: "100%" %>
+                                <div class="card-content is-overlay is-clipped">
+                                    
+                                    <span class="title is-4 has-text-primary">Tecnología</span>
+                                </div>
+                            </div>
+                        <% end%>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <%= link_to search_path(category: 10) do %>
+                            <div class="card-image">
+                                <%= image_tag  "home/category_10.jpg", class: "is-background", width: "100%", height: "100%" %>
+                                <div class="card-content is-overlay is-clipped">
+                                   
+                                    <span class="title is-4 has-text-primary">Educación</span>
+                                </div>
+                            </div>
+                        <% end%>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <%= link_to search_path(category: 11) do %>
+                            <div class="card-image">
+                                <%= image_tag  "home/category_11.jpg", class: "is-background", width: "100%", height: "100%" %>
+                                <div class="card-content is-overlay is-clipped">
+                                  
+                                    <span class="title is-4 has-text-primary">Electricidad</span>
+                                </div>
+                            </div>
+                        <% end%>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <%= link_to search_path(category: 12) do %>
+                            <div class="card-image">
+                                <%= image_tag  "home/category_12.jpg", class: "is-background", width: "100%", height: "100%" %>
+                                <div class="card-content is-overlay is-clipped">
+                                    
+                                    <span class="title is-4 has-text-primary">Seguridad</span>
+                                </div>
+                            </div>
+                        <% end%>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <%= link_to search_path(category: 13) do %>
+                            <div class="card-image">
+                                <%= image_tag  "home/category_13.jpg", class: "is-background", width: "100%", height: "100%" %>
+                                <div class="card-content is-overlay is-clipped">
+                                  
+                                    <span class="title is-4 has-text-primary">Audiovisual</span>
+                                </div>
+                            </div>
+                        <% end%>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <%= link_to search_path(category: 14) do %>
+                            <div class="card-image">
+                                <%= image_tag  "home/category_14.jpg", class: "is-background", width: "100%", height: "100%" %>
+                                <div class="card-content is-overlay is-clipped">
+                                   
+                                    <span class="title is-4 has-text-primary">Turismo</span>
+                                </div>
+                            </div>
+                        <% end%>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <%= link_to search_path(category: 15) do %>
+                            <div class="card-image">
+                                <%= image_tag  "home/category_15.jpg", class: "is-background", width: "100%", height: "100%" %>
+                                <div class="card-content is-overlay is-clipped">
+                                   
+                                    <span class="title is-4 has-text-primary">Mécanica</span>
+                                </div>
+                            </div>
+                        <% end%>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="p-10">
+                        <%= link_to search_path(category: 16) do %>
+                            <div class="card-image">
+                                <%= image_tag  "home/category_16.jpg", class: "is-background", width: "100%", height: "100%" %>
+                                <div class="card-content is-overlay is-clipped">
+                                    
+                                    <span class="title is-4 has-text-primary">Portal inmobiliario</span>
+                                </div>
+                            </div>
+                        <% end%>
+                    </div>
+                </div>
+
+               
         </div>
     
 </section>
