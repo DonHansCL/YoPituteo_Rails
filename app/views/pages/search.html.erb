@@ -1,4 +1,4 @@
-<%= render 'shared/categories' %>
+
 
 <section class="section">
     <div class="container">
@@ -76,12 +76,6 @@
                                 <hr/>
 
 
-
-
-
-
-
-
                                 <!-- Delivery Time -->
                                 <label class="label">Tiempo entrega</label>                                    
                                 <%= radio_button_tag 'delivery', "1", checked = "1" == @delivery %> 1 día <br>
@@ -92,6 +86,19 @@
                                 <%= radio_button_tag 'delivery', "0", checked = "0" == @delivery %> Todos
                                 <hr/>
                                 
+
+
+                                            <%  @categories.each do |item| %>
+                                                <%= link_to "#{item.name}", search_path(category: item.id), class: "navbar-item" %>
+                                            <% end %>   
+
+
+
+
+
+
+
+
                                 <!-- Buttons -->
                                 <div class="field m-t-20">                                    
                                         <button  class="button is-danger is-fullwidth" type="submit"> Aplicar</button>

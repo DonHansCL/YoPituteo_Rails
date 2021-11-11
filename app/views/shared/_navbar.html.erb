@@ -1,17 +1,21 @@
+ <% content_for :head do %>
+    <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
+ 
  	<nav class="navbar" role="navigation" aria-label="main navigation">
 	 	<div class="navbar-brand">
 		 	<a class="navbar-item" href="/">
 			 	<!--AQUI VA EL LOGO -->
 				<h1 class="title is-3 has-text-primary ">YoPituteo.cl</h1>
 			</a>
-			<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+			<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" id="burger">
 				<span class="aria-hidden"></span>
 				<span class="aria-hidden"></span>
 				<span class="aria-hidden"></span>
 			</a>
 		</div>
 
-		<div id="navbarBasicExample" class="navbar-menu">
+		<div class="navbar-menu" id="nav-links">
 			<div class="navbar-start">
 				<div class="navbar-item">
 					<%= form_tag search_path, method: :get do %>           
@@ -61,7 +65,7 @@
                           
 							<div class="navbar-item has-dropdown is-hoverable">
 								<a class="navbar-link">
-								<figure class="image is-34x34 m-r-5 avatar <%= current_user.status ? "online" : "offline" %>">
+								<figure class="image is-32x32 m-r-5 avatar <%= current_user.status ? "online" : "offline" %>">
                                     <%= image_tag avatar_url(current_user), class: "is-rounded" %>
                                 </figure>
 								<%= current_user.nombre%>
@@ -173,5 +177,14 @@
         $('#' + e.target.getAttribute('aria-controls')).toggleClass('is-hidden');
     })
 })
-</script>
 
+
+//mobile menu
+const burgerIcon = document.querySelector('#burger');
+const navbarMenu = document.querySelector('#nav-links');
+
+burgerIcon.addEventListener('click', () => {
+    navbarMenu.classList.toggle('is-active')
+})
+
+</script>
