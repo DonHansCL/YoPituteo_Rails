@@ -11,10 +11,10 @@
 //= require bulma
 //= require jquery.raty
 // All of bulma
-//import Bulma from '@vizuaalog/bulmajs';
+import Bulma from '@vizuaalog/bulmajs';
 
 // Only the plugins you need
-//import Navbar from '@vizuaalog/bulmajs/src/plugins/navbar';
+import Navbar from '@vizuaalog/bulmajs/src/plugins/navbar';
 
 
 require("jquery")
