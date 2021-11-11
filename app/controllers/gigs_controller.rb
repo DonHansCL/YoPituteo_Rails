@@ -9,7 +9,7 @@ class GigsController < ApplicationController
   def new
     @gig = current_user.gigs.build
     @categories = Category.all   
-    @provinces = Province.all
+    
   end
 
   def create
@@ -26,7 +26,7 @@ class GigsController < ApplicationController
 
   def edit
     @categories = Category.all    
-    @provinces = Province.all
+  
   end
 
 
@@ -89,8 +89,7 @@ class GigsController < ApplicationController
 
 
   def show
-    @categories = Category.all  
-    @provinces = Province.all
+    @categories = Category.all      
   end
 
 
@@ -115,7 +114,7 @@ class GigsController < ApplicationController
     @gig = current_user.gigs.build(gig_params)
     @categories = Category.all
     @category = Category.find(params[:category]) if params[:category].present?
-    @provinces = Province.all   
+     
    # @province = Province.find(params[:province]) if params[:province].present?
 
    #  @gigs = Gig.where("active = ? AND gigs.title ILIKE ? AND category_id = ?", true, "%#{params[:q]}%", params[:category])
@@ -140,10 +139,6 @@ class GigsController < ApplicationController
         query_condition.push params[:category]
       end
 
-      if !params[:province].blank?
-        query_condition[0] += " AND province_id = ?"
-        query_condition.push params[:province]
-      end
 
       if !params[:min].blank?
         query_condition[0] += " AND pricings.price >= ?"
@@ -199,7 +194,7 @@ class GigsController < ApplicationController
   end
 
   def gig_params
-    params.require(:gig).permit(:title, :video, :description, :active, :category_id, :province_id, :has_single_pricing, 
+    params.require(:gig).permit(:title, :video, :description, :active, :category_id, :has_single_pricing, 
                         pricings_attributes: [:id, :title, :description, :delivery_time, :price, :pricing_type])    
             
   end  

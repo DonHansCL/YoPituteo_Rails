@@ -2,16 +2,12 @@ class PagesController < ApplicationController
   
    
   def new
-   
-    @provinces = Province.all
-
+ 
   end
   
 
   def search
     
-    @provinces = Province.all
-
     @categories = Category.all
     @category = Category.find(params[:category]) if params[:category].present?
      
@@ -37,11 +33,6 @@ class PagesController < ApplicationController
       if !params[:category].blank?
         query_condition[0] += " AND category_id = ?"
         query_condition.push params[:category]
-      end
-
-      if !params[:province].blank?
-        query_condition[0] += " AND province_id = ?"
-        query_condition.push params[:province]
       end
 
       if !params[:min].blank?

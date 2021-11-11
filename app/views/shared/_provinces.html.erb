@@ -1,9 +1,0 @@
-<nav class="navbar has-shadow" style="z-index: 5">
-    <div class="container">
-        <div class="navbar">
-            <%  @provinces.each do |item| %>            
-                <%= link_to "#{item.nombre}", search_path(province: item.id), class: "navbar-item" %>
-            <% end %>                         
-        </div>
-    </div>
-</nav>
