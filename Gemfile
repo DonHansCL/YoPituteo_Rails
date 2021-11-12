@@ -28,7 +28,7 @@ gem 'kaminari'
 gem 'time_ago_in_words_es'
 
 gem "aws-sdk-s3", require: false
-gem 'mini_magick', '~> 4.8'
+
 
 
 gem 'faker', '=1.9.3'

@@ -165,7 +165,6 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
-    mini_magick (4.11.0)
     mini_mime (1.1.2)
     minitest (5.14.4)
     msgpack (1.4.2)
@@ -330,7 +329,6 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   kaminari
-  mini_magick (~> 4.8)
   noty-rails
   omniauth
   omniauth-facebook (= 5.0.0)
