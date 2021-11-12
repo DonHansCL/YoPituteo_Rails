@@ -2,3 +2,7 @@
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative "../config/boot"
 require "rails/commands"
+
+aws:
+  access_key_id: AKIA55I2QBRLMR6ESE6Y
+  secret_access_key: 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
