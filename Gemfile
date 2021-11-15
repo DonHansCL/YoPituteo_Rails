@@ -27,6 +27,8 @@ gem 'omniauth-facebook', '=5.0.0'
 gem 'kaminari' 
 gem 'time_ago_in_words_es'
 gem 'redis', '~> 3.3'
+gem 'rails_12factor'
+
 
 gem "aws-sdk-s3", require: false
 gem 'mini_magick', '~> 4.8'
