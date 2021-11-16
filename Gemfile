@@ -5,6 +5,9 @@ ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'railties', '~> 6.1', '>= 6.1.4.1'
+gem 'autoprefixer-rails', '~> 10.3', '>= 10.3.3.0'
+gem 'activemodel', '~> 6.1', '>= 6.1.4.1'
 
 # Use Puma as the app server
 
@@ -16,6 +19,7 @@ gem 'trestle', '~> 0.8.12'   #es para el ADMIN DASHBOARD
 gem 'trestle-auth', '~> 0.2.5'
 gem 'trestle-search', '~> 0.3.0'
 gem 'trestle-tinymce', '~> 0.1.3'
+gem 'trestle-active_storage'
   
 
 gem 'jquery-rails'
